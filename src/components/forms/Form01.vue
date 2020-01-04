@@ -21,26 +21,26 @@
           <div class="row">
               <label for="edtIdade" class="col-md-4 descricao" style="margin-top:0.3rem">IDADE :</label>
               <span class="col-sm-5">
-              <input v-model="edtIdade" id="edtIdade" type="number" class="form-control " min="0" max="120">
+              <input v-model="edtIdade" :class="{ 'is-invalid' : $v.edtIdade.$invalid }" id="edtIdade" type="number" class="form-control" min="0" max="120">
               </span>
           </div>
           <div class="row">
               <label for="edtPeso" class="col-md-4 descricao" style="margin-top:0.3rem">PESO :</label>
               <span class="col-sm-5">
-              <input v-model="edtPeso" id="edtPeso" type="number" class="form-control" min="0" max="120">
+              <input v-model="edtPeso" id="edtPeso" type="number" :class="{ 'is-invalid' : $v.edtPeso.$invalid }" class="form-control" min="0" max="120">
               </span>
               <span class="descricao" style="margin-left:0.5rem;margin-top:0.3rem">Kg</span>
           </div>
           <div class="row">
-              <label for="edtAltura" class="col-md-4 descricao" style="margin-top:0.3rem">ALTURA :</label>
+              <label for="edtAltura"  class="col-md-4 descricao" style="margin-top:0.3rem">ALTURA :</label>
               <span class="col-sm-5 ipt">
-              <input v-model="edtAltura" id="edtAltura" type="number" class="form-control" min="0" max="240">
+              <input v-model="edtAltura" id="edtAltura" type="number" :class="{ 'is-invalid' : $v.edtAltura.$invalid }" class="form-control" min="0" max="240">
               </span>
           </div>
           <div class="row">
               <label for="edtCircunferenciaCintura" class="col-md-4 descricao">CIRCUNFERÊNCIA DA CINTURA :</label>
               <span class="col-sm-5 ipt">
-              <input v-model="edtCircunferenciaCintura" id="edtCircunferenciaCintura" type="number" class="form-control" min="0" max="120" >
+              <input v-model="edtCircunferenciaCintura" id="edtCircunferenciaCintura" type="number" :class="{ 'is-invalid' : $v.edtCircunferenciaCintura.$invalid }" class="form-control" min="0" max="120" >
               </span>
               <span class="descricao" style="margin-left:0.5rem;margin-top:0.3rem">cm</span>
 
@@ -145,7 +145,7 @@
             <div class="row">
                 <label class="col-md-4 sexo">SEU BIOTIPO :</label>
                   <span class="col-sm-5">
-                    <select v-model="edtBiotipo"class="custom-select" id="edtBiotipo">
+                    <select v-model="edtBiotipo" :class="{ 'is-invalid' : $v.edtBiotipo.$invalid }" class="custom-select" id="edtBiotipo">
                         <option value="">- selecione -</option>
                         <option value="ectomorfo">Ectomorfo</option>
                         <option value="mesomorfo">Mesomorfo</option>
@@ -165,14 +165,14 @@
             <div class="row">
                 <label for="edtCircunferenciaQuadril" class="col-md-4 descricao" style="margin-top:-0.3rem">CIRCUNFERÊNCIA DO QUADRIL :</label>
                 <span class="col-sm-5 ipt">
-                <input v-model="edtCircunferenciaQuadril" id="edtCircunferenciaQuadril" type="number" class="form-control" min="0" max="120">
+                <input v-model="edtCircunferenciaQuadril" id="edtCircunferenciaQuadril" type="number" :class="{ 'is-invalid' : $v.edtCircunferenciaQuadril.$invalid }" class="form-control" min="30" max="2000">
                 </span>
                 <span class="descricao" style="margin-left:0.5rem;margin-top:0.3rem">cm</span>
             </div>
             <div class="row">
                 <label for="edtObjetivo" class="col-md-4 descricao" style="margin-top:-0.3rem">QUAL É SEU OBJETIVO :</label>
                 <span class="col-sm-5">
-                    <select v-model="edtObjetivo" class="custom-select" id="edtObjetivo">
+                    <select v-model="edtObjetivo" :class="{ 'is-invalid' : $v.edtObjetivo.$invalid }" class="custom-select" id="edtObjetivo">
                         <option value="">- selecione -</option>
                         <option value="perder">Perder Peso</option>
                         <option value="manter">Manter o peso</option>
@@ -183,7 +183,7 @@
             <div class="row">
                 <label for="edtQuilosObjetivo" class="col-md-4 descricao" style="margin-top:-0.3rem">QUANTOS QUILOS :</label>
                 <span class="col-sm-5 ipt">
-                <input v-model="edtQuilosObjetivo" id="edtQuilosObjetivo" type="number" class="form-control" min="0" max="120" >
+                <input v-model="edtQuilosObjetivo" id="edtQuilosObjetivo" type="number" :class="{ 'is-invalid' : $v.edtQuilosObjetivo.$invalid }" class="form-control" min="0" max="120" >
                 </span>
                 <span class="descricao" style="margin-left:0.5rem;margin-top:0.3rem">kg</span>
             </div>
@@ -205,14 +205,14 @@
 </template>
 
 <script>
+
+import { required, minLength, between } from 'vuelidate/lib/validators'
+
 export default {
   name: 'Form01',
   components:{
       
   },
-  props:[
-    'urlVideo',
-  ],
   data () {
     return {
       iptSexo: "masculino",
@@ -232,15 +232,52 @@ export default {
       edtQuilosObjetivo: "",
     }
   },
+    validations : {
+      edtIdade: {
+        required
+      },
+      edtPeso: {
+        required
+      },
+      edtAltura: {
+        required
+      },
+      edtCircunferenciaCintura: {
+        required
+      },
+      edtBiotipo: {
+        required
+      },
+      edtCircunferenciaQuadril: {
+        required
+      },
+      edtObjetivo: {
+        required
+      },
+      edtQuilosObjetivo: {
+        required
+      },
+  },
     methods: {
       validaForm(){
-        if(this.$data.edtIdade == ""){
-          console.log('vazio');
-        }else{
-          console.log(this.$data.edtIdade);
+        if(this.isValid){
+          console.log('blz')
         }
       }
     },
+     computed:{
+    isValid(){
+      return  !this.$v.edtIdade.$invalid &&
+              !this.$v.edtPeso.$invalid &&
+              !this.$v.edtAltura.$invalid &&
+              !this.$v.edtCircunferenciaCintura.$invalid &&
+              !this.$v.edtBiotipo.$invalid &&
+              !this.$v.edtCircunferenciaQuadril.$invalid &&
+              !this.$v.edtObjetivo.$invalid &&
+              !this.$v.edtQuilosObjetivo.$invalid
+
+    }
+  },
 }
 </script>
 
@@ -272,4 +309,5 @@ export default {
   .row{
     margin-top: 1rem;
   }
+
 </style>

@@ -25,6 +25,7 @@ import Footer from '@/components/footer'
 
 
 
+
 export default {
   name: 'Principal',
   components:{
