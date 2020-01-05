@@ -157,9 +157,9 @@
             <div class="row">
                 <label for="edtExexcicios" class="col-md-4 descricao" style="margin-top:-0.4rem">EXERCÍCIOS DIARIOS :</label>
                 <span class="col-sm-5 ipt">
-                    <input v-model="edtExexcicios" type="range" class="custom-range custom-range-danger" id="edtExexcicios" min="0" max="5">
+                    <input v-model="edtExercicios" type="range" class="custom-range custom-range-danger" id="edtExexcicios" min="1" max="6">
                 </span>
-                <span class="descricao" style="margin-left:0.5rem;margin-top:0.3rem">{{ edtExexcicios }}</span>
+                <span class="descricao" style="margin-left:0.5rem;margin-top:0.3rem">{{ edtExercicios }}</span>
 
             </div>
             <div class="row">
@@ -216,20 +216,20 @@ export default {
   data () {
     return {
       iptSexo: "masculino",
-      edtIdade: "",
-      edtPeso: "",
-      edtAltura: "",
-      edtCircunferenciaCintura: "",
+      edtIdade: "27",
+      edtPeso: "75",
+      edtAltura: "170",
+      edtCircunferenciaCintura: "70",
       iptInsonia: "nao",
       iptDormeMal: "nao",
       iptEstresse: "nao",
       iptSanfona: "nao",
       iptAlcool: "nao",
-      edtBiotipo: "",
-      edtExexcicios: "0",
-      edtCircunferenciaQuadril: "",
-      edtObjetivo: "",
-      edtQuilosObjetivo: "",
+      edtBiotipo: "endomorfo",
+      edtExercicios: "2",
+      edtCircunferenciaQuadril: "75",
+      edtObjetivo: "perder",
+      edtQuilosObjetivo: "5",
     }
   },
     validations : {
@@ -261,7 +261,7 @@ export default {
     methods: {
       validaForm(){
         if(this.isValid){
-          console.log('blz')
+          this.$emit('calcular', this.$data)
         }
       }
     },

@@ -13,7 +13,7 @@
                       <tr>
                         <td>Percentual de gordura corporal</td>
                         <td>
-                          <span class="badge bg-danger"> {{ gorduraCorporal || "21,5" }} %</span>
+                          <span class="badge bg-danger"> {{ gorduraCorporal || " ... " }} %</span>
                         </td>
                         <td>
                           <span class="badge bg-danger">MEDIO</span>
@@ -23,7 +23,7 @@
                       <tr>
                         <td>Massa magra corporal aproximada</td>
                         <td>
-                          <span class="badge bg-warning">{{ massasMagra || "74,5" }} Kg</span>
+                          <span class="badge bg-warning">{{ massaMagra || " ... " }} Kg</span>
                           
                         </td>
                         <td><span class="badge bg-warning">70%</span></td>
@@ -32,7 +32,7 @@
                       <tr>
                         <td>Massa gorda corporal aproximada</td>
                         <td>
-                            <span class="badge bg-primary">{{ massaGorda || "20,5" }} Kg</span>
+                            <span class="badge bg-primary">{{ massaGorda || " ... " }} Kg</span>
                         </td>
                         <td><span class="badge bg-primary">ALTA</span></td>
                       </tr>
@@ -40,14 +40,14 @@
                       <tr>
                         <td>Índice de massa corporal (IMC)</td>
                         <td>
-                            <span class="badge bg-success">{{ imc || "32,8" }}</span>
+                            <span class="badge bg-success">{{ imc || " ... " }}</span>
                         </td>
                         <td><span class="badge bg-success">SOBREPESO</span></td>
                       </tr>
                       <tr>
                         <td>Relação cintura quadril (RCQ)</td>
                         <td>
-                          <span class="badge bg-success">{{ rcq || "0,88" }}</span>
+                          <span class="badge bg-success">{{ rcq || " ... " }}</span>
                         </td>
                         <td><span class="badge bg-success">RUIM</span></td>
                       </tr>
@@ -64,7 +64,7 @@
                           <td>Quantas calorias o seu corpo consome a cada 24hs</td>
                           <td class="badge-lg bg-warning">
                             <label class="bottom-2">
-                                {{ taxaMetabolica || "1763" }} 
+                                {{ taxaMetabolica || " ... " }} 
                                 <span class="badge"> kcal/dia</span>
 
                             </label>
@@ -79,12 +79,12 @@
                       <tbody>
                         <tr>
                           <td class="bg-black">
-                            {{ objetivo || "EMAGRECIMENTO BRUTO" }}
+                            {{ objetivo || " ..." }}
                           </td>
                         </tr>
                         <tr >
                           <p class="top-3">
-                            {{ textoObjetivo || "bla bla bla lorem ipsum dolum sia amet" }}
+                            {{ textoObjetivo || " ... " }}
                           </p>
                         </tr>
                       </tbody>
@@ -92,15 +92,15 @@
                     <div class="col-md-12 row top-3">
                       <div class="col-md-4">
                         <label for="">Proteínas</label>
-                        <div class="bg-success">{{ proteinas || 154 }} <span class="badge">gr/dia</span></div>
+                        <div class="bg-success">{{ proteinas ||  " ... "  }} <span class="badge">gr/dia</span></div>
                       </div>
                       <div class="col-md-4">
                         <label for="">Carboidratos</label>
-                        <div class="bg-success">{{ carboidratos || 149 }} <span class="badge">gr/dia</span></div>
+                        <div class="bg-success">{{ carboidratos || " ... " }} <span class="badge">gr/dia</span></div>
                       </div>
                       <div class="col-md-4">
                         <label for="">Gorduras</label>
-                        <div class="bg-success">{{ gorduras || 29 }} <span class="badge">gr/dia</span></div>
+                        <div class="bg-success">{{ gorduras || " ... " }} <span class="badge">gr/dia</span></div>
                       </div>
                     </div>
                   <!--  -->
@@ -123,7 +123,13 @@ export default {
     "massaMagra",
     "massaGorda",
     "imc",
-    "rcq",
+    "taxaMetabolica",
+    "objetivo",
+    "textoObjetivo",
+    "proteinas",
+    "carboidratos",
+    "gorduras",
+    "rcq"
   ],
   data () {
     return {
