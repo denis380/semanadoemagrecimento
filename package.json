@@ -5,14 +5,17 @@
   "author": "Denis dos Reis <denis380@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "postinstall": "npm run build",
     "start": "npm run dev",
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit",
     "build": "node build/build.js"
   },
   "dependencies": {
+    "express": "^4.17.1",
+    "save": "^2.4.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vuelidate": "^0.7.4"
