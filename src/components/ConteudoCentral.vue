@@ -27,6 +27,18 @@ export default {
   },
   methods: {
     calcular(obj){
+      var fundoGorduraCorporal;
+      var textoGorduraCorporal;
+      var fundoMassaMagra;     
+      var textoMassaMagra;      
+      var fundoMassaGorda;
+      var textoMassaGorda;
+      var fundoImc;
+      var textoImc;
+      var textoRcq;  
+      var fundoRcq;  
+
+
       var sexo = obj.iptSexo
       var idade = obj.edtIdade
       var peso = obj.edtPeso
@@ -76,7 +88,17 @@ export default {
       }
       var quadril = obj.edtCircunferenciaQuadril
       var cintura = obj.edtCircunferenciaCintura
-      var objetivo = obj.edtObjetivo
+
+      //Tratamentos de exibição
+      if(obj.edtObjetivo == "perder"){
+        var objetivo = "PERDER PESO"
+      }
+      if(obj.edtObjetivo == "manter"){
+        var objetivo = "MANTER O PESO"
+      }
+      if(obj.edtObjetivo == "ganhar"){
+        var objetivo = "GANHAR PESO"
+      }
       var quilosObjetivo = obj.edtQuilosObjetivo
       var rcq = cintura / quadril;
       var percentualGordura = 64 - ((20*altura)/cintura);
@@ -91,6 +113,61 @@ export default {
       if(sexo == "feminino"){
         var tmbBase = 655.1 + (9.563 * peso) + (1.850 * altura) - (4.676 * idade)
       }
+      if(percentualGordura > 20 && percentualGordura <= 30){
+        fundoGorduraCorporal = 'bg-warning';
+        textoGorduraCorporal = 'MEDIO';
+      }else if(percentualGordura > 31){
+        fundoGorduraCorporal = 'bg-danger';
+        textoGorduraCorporal = 'ALTO';
+      }else{
+        textoGorduraCorporal = 'BOM';
+        fundoGorduraCorporal = 'bg-success';
+      }
+      //
+      if(rcq > 20 && rcq <= 30){
+        fundoRcq = 'bg-warning';
+        textoRcq = 'MEDIO';
+      }else if(rcq > 31){
+        fundoRcq = 'bg-danger';
+        textoRcq = 'ALTO';
+      }else{
+        textoRcq = 'BOM';
+        fundoRcq = 'bg-success';
+      }
+      //
+      if(imc > 20 && imc <= 30){
+        fundoImc = 'bg-warning';
+        textoImc = 'MEDIO';
+      }else if(imc > 31){
+        fundoImc = 'bg-danger';
+        textoImc = 'ALTO';
+      }else{
+        textoImc = 'BOM';
+        fundoImc = 'bg-success';
+      }
+      //
+      if(massaMagra > 20 && massaMagra <= 30){
+        fundoMassaMagra = 'bg-warning';
+        textoMassaMagra = 'MEDIO';
+      }else if(massaMagra > 31){
+        fundoMassaMagra = 'bg-danger';
+        textoMassaMagra = 'ALTO';
+      }else{
+        textoMassaMagra = 'BOM';
+        fundoMassaMagra = 'bg-success';
+      }
+      //
+      if(massaGorda > 20 && massaGorda <= 30){
+        fundoMassaGorda = 'bg-warning';
+        textoMassaGorda = 'MEDIO';
+      }else if(massaGorda > 31){
+        fundoMassaGorda = 'bg-danger';
+        textoMassaGorda = 'ALTO';
+      }else{
+        textoMassaGorda = 'BOM';
+        fundoMassaGorda = 'bg-success';
+      }
+      
 
       // Acrescentando o biotipo
       var tmbBase1 = tmbBase * biotipo;
@@ -102,12 +179,22 @@ export default {
       var $arrayResult = {};
       $arrayResult = {
         'taxaMetabolica': parseFloat(taxaMetabolica.toFixed(2)),
-        'imc': parseFloat(imc.toFixed(2)),
         'objetivo': objetivo,
+        'imc': parseFloat(imc.toFixed(2)),
+        'fundoImc': fundoImc,
+        'textoImc': textoImc,
         'rcq': parseFloat(rcq.toFixed(2)),
-        'gorduraCorporal': parseFloat(percentualGordura.toFixed(2)),
+        'fundoRcq': fundoRcq,
+        'textoRcq': textoRcq,
         'massaMagra': parseFloat(massaMagra.toFixed(2)),
-        'massaGorda': parseFloat(massaGorda.toFixed(2))
+        'textoMassaMagra': textoMassaMagra,
+        'fundoMassaMagra': fundoMassaMagra,
+        'massaGorda': parseFloat(massaGorda.toFixed(2)),
+        'textoMassaGorda': textoMassaGorda,
+        'fundoMassaGorda': fundoMassaGorda,
+        'gorduraCorporal': parseFloat(percentualGordura.toFixed(2)),
+        'fundoGorduraCorporal': fundoGorduraCorporal,
+        'textoGorduraCorporal': textoGorduraCorporal
 
         }
       

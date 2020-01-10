@@ -12,14 +12,24 @@
 
     <Resultado
       v-if="this.exibe"
-      v-bind:gorduraCorporal = 'resultados.gorduraCorporal'
-      v-bind:massaMagra = 'resultados.massaMagra'
-      v-bind:massaGorda = 'resultados.massaGorda'
-      v-bind:imc = 'resultados.imc'
-      v-bind:rcq = 'resultados.rcq'
-      v-bind:taxaMetabolica = 'resultados.taxaMetabolica'
-      v-bind:objetivo = 'resultados.objetivo'
-      v-bind:textoObjetivo = 'resultados.textoObjetivo'
+      v-bind:gorduraCorporal      = 'resultados.gorduraCorporal'
+      v-bind:fundoGorduraCorporal = 'resultados.fundoGorduraCorporal'
+      v-bind:textoGorduraCorporal = 'resultados.textoGorduraCorporal'
+      v-bind:massaMagra           = 'resultados.massaMagra'
+      v-bind:fundoMassaMagra      = 'resultados.fundoMassaMagra'
+      v-bind:textoMassaMagra      = 'resultados.textoMassaMagra'
+      v-bind:massaGorda           = 'resultados.massaGorda'
+      v-bind:fundoMassaGorda      = 'resultados.fundoMassaGorda'
+      v-bind:textoMassaGorda      = 'resultados.textoMassaGorda'
+      v-bind:imc                  = 'resultados.imc'
+      v-bind:fundoImc             = 'resultados.fundoImc'
+      v-bind:textoImc             = 'resultados.textoImc'
+      v-bind:rcq                  = 'resultados.rcq'  
+      v-bind:textoRcq             = 'resultados.textoRcq'  
+      v-bind:fundoRcq             = 'resultados.fundoRcq'  
+      v-bind:taxaMetabolica       = 'resultados.taxaMetabolica'
+      v-bind:objetivo             = 'resultados.objetivo'
+      v-bind:textoObjetivo        = 'resultados.textoObjetivo'
      
      />
 

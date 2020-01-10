@@ -13,43 +13,43 @@
                       <tr>
                         <td>Percentual de gordura corporal</td>
                         <td>
-                          <span class="badge bg-danger"> {{ gorduraCorporal || " ... " }} %</span>
+                          <span :class="fundoGorduraCorporal" class="badge"> {{ gorduraCorporal || " ... " }} %</span>
                         </td>
                         <td>
-                          <span class="badge bg-danger">MEDIO</span>
+                          <span :class="fundoGorduraCorporal" class="badge">{{ textoGorduraCorporal || "..." }}</span>
                         </td>
                       </tr>
     
                       <tr>
                         <td>Massa magra corporal aproximada</td>
                         <td>
-                          <span class="badge bg-warning">{{ massaMagra || " ... " }} Kg</span>
+                          <span :class="fundoMassaMagra" class="badge">{{ massaMagra || " ... " }} Kg</span>
                           
                         </td>
-                        <td><span class="badge bg-warning">70%</span></td>
+                        <td><span :class="fundoMassaMagra" class="badge">{{ textoMassaMagra || "..." }}</span></td>
                       </tr>
     
                       <tr>
                         <td>Massa gorda corporal aproximada</td>
                         <td>
-                            <span class="badge bg-primary">{{ massaGorda || " ... " }} Kg</span>
+                            <span :class="fundoMassaGorda" class="badge">{{ massaGorda || " ... " }} Kg</span>
                         </td>
-                        <td><span class="badge bg-primary">ALTA</span></td>
+                        <td><span :class="fundoMassaGorda" class="badge">{{ textoMassaGorda || " ... " }}</span></td>
                       </tr>
     
                       <tr>
                         <td>Índice de massa corporal (IMC)</td>
                         <td>
-                            <span class="badge bg-success">{{ imc || " ... " }}</span>
+                            <span :class="fundoImc" class="badge">{{ imc || " ... " }}</span>
                         </td>
-                        <td><span class="badge bg-success">SOBREPESO</span></td>
+                        <td><span :class="fundoImc" class="badge">{{ textoImc || " ... " }}</span></td>
                       </tr>
                       <tr>
                         <td>Relação cintura quadril (RCQ)</td>
                         <td>
-                          <span class="badge bg-success">{{ rcq || " ... " }}</span>
+                          <span :class="fundoRcq" class="badge ">{{ rcq || " ... " }}</span>
                         </td>
-                        <td><span class="badge bg-success">RUIM</span></td>
+                        <td><span :class="fundoRcq" class="badge ">{{ textoRcq || " ... " }}</span></td>
                       </tr>
     
                     </tbody>
@@ -120,15 +120,25 @@ export default {
   },
   props:[
     "gorduraCorporal",
+    "textoGorduraCorporal",
+    "fundoGorduraCorporal",
     "massaMagra",
+    "fundoMassaMagra",
+    "textoMassaMagra",
     "massaGorda",
+    "fundoMassaGorda",
+    "textoMassaGorda",
     "imc",
+    "fundoImc",
+    "textoImc",
     "taxaMetabolica",
     "objetivo",
     "textoObjetivo",
     "proteinas",
     "carboidratos",
     "gorduras",
+    "textoRcq",
+    "fundoRcq",
     "rcq"
   ],
   data () {
