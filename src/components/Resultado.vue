@@ -40,7 +40,7 @@
                       <tr>
                         <td>Índice de massa corporal (IMC)</td>
                         <td>
-                            <span :class="fundoImc" class="badge">{{ imc || " ... " }}</span>
+                            <span :class="fundoImc" class="badge">{{ imc || " ... " }} Kg/m2</span>
                         </td>
                         <td><span :class="fundoImc" class="badge">{{ textoImc || " ... " }}</span></td>
                       </tr>

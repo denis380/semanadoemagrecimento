@@ -27,7 +27,7 @@
           <div class="row">
               <label for="edtPeso" class="col-md-4 descricao" style="margin-top:0.3rem">PESO :</label>
               <span class="col-sm-5">
-              <input v-model="edtPeso" id="edtPeso" type="number" :class="{ 'is-invalid' : $v.edtPeso.$invalid }" class="form-control" min="0" max="120">
+              <input v-model="edtPeso" id="edtPeso" type="number" :class="{ 'is-invalid' : $v.edtPeso.$invalid }" class="form-control" min="0" max="200">
               </span>
               <span class="descricao" style="margin-left:0.5rem;margin-top:0.3rem">Kg</span>
           </div>
@@ -40,7 +40,7 @@
           <div class="row">
               <label for="edtCircunferenciaCintura" class="col-md-4 descricao">CIRCUNFERÊNCIA DA CINTURA :</label>
               <span class="col-sm-5 ipt">
-              <input v-model="edtCircunferenciaCintura" id="edtCircunferenciaCintura" type="number" :class="{ 'is-invalid' : $v.edtCircunferenciaCintura.$invalid }" class="form-control" min="0" max="120" >
+              <input v-model="edtCircunferenciaCintura" id="edtCircunferenciaCintura" type="number" :class="{ 'is-invalid' : $v.edtCircunferenciaCintura.$invalid }" class="form-control" min="0" max="300" >
               </span>
               <span class="descricao" style="margin-left:0.5rem;margin-top:0.3rem">cm</span>
 

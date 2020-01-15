@@ -36,7 +36,10 @@ export default {
       var fundoImc;
       var textoImc;
       var textoRcq;  
-      var fundoRcq;  
+      var fundoRcq;
+      var rangeIdadeGordura;  
+      var rangeHomem;
+      var percentual;
 
 
       var sexo = obj.iptSexo
@@ -113,17 +116,8 @@ export default {
       if(sexo == "feminino"){
         var tmbBase = 655.1 + (9.563 * peso) + (1.850 * altura) - (4.676 * idade)
       }
-      if(percentualGordura > 20 && percentualGordura <= 30){
-        fundoGorduraCorporal = 'bg-warning';
-        textoGorduraCorporal = 'MEDIO';
-      }else if(percentualGordura > 31){
-        fundoGorduraCorporal = 'bg-danger';
-        textoGorduraCorporal = 'ALTO';
-      }else{
-        textoGorduraCorporal = 'BOM';
-        fundoGorduraCorporal = 'bg-success';
-      }
-      //
+      // ---------------------------------------------------------
+
       if(rcq > 20 && rcq <= 30){
         fundoRcq = 'bg-warning';
         textoRcq = 'MEDIO';
@@ -134,16 +128,19 @@ export default {
         textoRcq = 'BOM';
         fundoRcq = 'bg-success';
       }
-      //
-      if(imc > 20 && imc <= 30){
+      // ---------------------------------------------------------
+      if(imc > 20.0 && imc <= 29.9){
         fundoImc = 'bg-warning';
-        textoImc = 'MEDIO';
-      }else if(imc > 31){
+        textoImc = 'SOBREPESO';
+      }else if(imc > 30.0 && imc <= 34.9){
+        fundoImc = 'bg-warning';
+        textoImc = 'OBESIDADE GRAU I';
+      }else if(imc > 35.0 && imc <= 39.9){
+        textoImc = 'OBESIDADE GRAU II';
         fundoImc = 'bg-danger';
-        textoImc = 'ALTO';
-      }else{
-        textoImc = 'BOM';
-        fundoImc = 'bg-success';
+      }else if(imc >= 40.0){
+        textoImc = 'OBESIDADE GRAU III';
+        fundoImc = 'bg-danger';
       }
       //
       if(massaMagra > 20 && massaMagra <= 30){
@@ -166,6 +163,63 @@ export default {
       }else{
         textoMassaGorda = 'BOM';
         fundoMassaGorda = 'bg-success';
+      }
+
+      // Calculo resposta percentual de gordura
+      if(idade >= 18 && idade <= 25){
+        rangeIdadeGordura = 1;
+      }else if(idade >= 26 && idade <= 35){
+        rangeIdadeGordura = 2;
+      }else if(idade >= 36 && idade <= 45){
+        rangeIdadeGordura = 3;
+      }else if(idade >= 46 && idade <= 55){
+        rangeIdadeGordura = 4;
+      }else if(idade >= 56 && idade <= 65){
+        rangeIdadeGordura = 5;
+      }else{
+        rangeIdadeGordura = 0;
+      }
+      
+      // ---------------------------------------------------------
+      if(percentualGordura >= 18 && percentualGordura <= 25){
+        fundoGorduraCorporal = 'bg-warning';
+        textoGorduraCorporal = 'MEDIO';
+      }else if(percentualGordura >= 26 && percentualGordura <= 35){
+        fundoGorduraCorporal = 'bg-danger';
+        textoGorduraCorporal = 'ALTO';
+      }else if(percentualGordura >= 36 && percentualGordura <= 45){
+        fundoGorduraCorporal = 'bg-danger';
+        textoGorduraCorporal = 'ALTO';
+      }else if(percentualGordura >= 46 && percentualGordura <= 55){
+        fundoGorduraCorporal = 'bg-danger';
+        textoGorduraCorporal = 'ALTO';
+      }else if(percentualGordura >= 56 && percentualGordura <= 65){
+        fundoGorduraCorporal = 'bg-danger';
+        textoGorduraCorporal = 'ALTO';
+      }else{
+        textoGorduraCorporal = '[indefinido]';
+        fundoGorduraCorporal = 'bg-ligth';
+      }
+
+      switch (true) {
+        case (idade > 0 && idade <= 25) :
+          percentual = percentual1825(percentualGordura);
+          break;
+        case (idade <= 35) :
+          percentual = percentual2635(percentualGordura);
+          break;
+        case (idade <= 45) :
+          percentual = percentual3645(percentualGordura);
+          break;
+        case (idade <= 55) :
+          percentual = percentual4655(percentualGordura);
+          break;
+        case (idade <= 65) :
+          percentual = percentual5665(percentualGordura);
+          break;
+      
+        default:
+          break;
       }
       
 
@@ -194,16 +248,157 @@ export default {
         'fundoMassaGorda': fundoMassaGorda,
         'gorduraCorporal': parseFloat(percentualGordura.toFixed(2)),
         'fundoGorduraCorporal': fundoGorduraCorporal,
-        'textoGorduraCorporal': textoGorduraCorporal
+        'textoGorduraCorporal': textoGorduraCorporal,
+        'percentual' : percentual
 
         }
+        console.log(percentual.fundo);
       
-      //console.log($arrayResult);
       this.$emit('exibeResult', $arrayResult)
-    }
+    },
+    
   },
 }
-
+function percentual1825(percentualGordura){
+  switch (true) {
+    case (percentualGordura >= 0 && percentualGordura <= 6):
+        return {'nivel':'EXCELENTE', 'faixa':'0 a 6%', 'idade': '0 a 25', 'fundo': 'bg-success'}
+      break;
+    case (percentualGordura > 6 && percentualGordura <= 11):
+        return {'nivel':'BOM', 'faixa':'7 a 11%', 'idade': '18 a 25', 'fundo': 'bg-success'}
+      break;
+    case (percentualGordura > 11 && percentualGordura <= 14):
+        return {'nivel':'ACIMA DA MÉDIA', 'faixa':'12 a 14%', 'idade': '18 a 25', 'fundo': 'bg-success'}
+      break;
+    case (percentualGordura > 14 && percentualGordura <= 16):
+        return {'nivel':'MEDIA', 'faixa':'15 a 16%', 'idade': '18 a 25', 'fundo': 'bg-warning'}
+      break;
+    case (percentualGordura > 16 && percentualGordura <= 20):
+        return {'nivel':'ABAIXO DA MÉDIA', 'faixa':'17 a 20%', 'idade': '18 a 25', 'fundo': 'bg-warning'}
+      break;
+    case (percentualGordura > 20 && percentualGordura <= 24):
+        return {'nivel':'RUIM', 'faixa':'20 a 24%', 'idade': '18 a 25', 'fundo': 'bg-danger'}
+      break;
+    case (percentualGordura > 24 && percentualGordura <= 36):
+        return {'nivel':'MUITO RUIM', 'faixa':'25 a 36%', 'idade': '18 a 25', 'fundo': 'bg-danger'}
+      break;
+  
+    default:
+      break;
+  }
+}
+function percentual2635(percentualGordura){
+   switch (true) {
+    case (percentualGordura > 0 && percentualGordura <= 12):
+        return {'nivel':'EXCELENTE', 'faixa':'0 a 1%', 'idade': '26 a 35', 'fundo': 'bg-success'}
+      break;
+    case (percentualGordura > 12 && percentualGordura <= 16):
+        return {'nivel':'BOM', 'faixa':'12 a 15%', 'idade': '26 a 35', 'fundo': 'bg-success'}
+      break;
+    case (percentualGordura > 16 && percentualGordura <= 18):
+        return {'nivel':'ACIMA DA MÉDIA', 'faixa':'16 a 18%', 'idade': '26 a 35', 'fundo': 'bg-success'}
+      break;
+    case (percentualGordura > 18 && percentualGordura <= 21):
+        return {'nivel':'MEDIA', 'faixa':'18 a 21%', 'idade': '26 a 35', 'fundo': 'bg-warning'}
+      break;
+    case (percentualGordura > 21 && percentualGordura <= 24):
+        return {'nivel':'ABAIXO DA MÉDIA', 'faixa':'17 a 24%', 'idade': '26 a 35', 'fundo': 'bg-warning'}
+      break;
+    case (percentualGordura > 24 && percentualGordura <= 28):
+        return {'nivel':'RUIM', 'faixa':'24 a 28%', 'idade': '26 a 35', 'fundo': 'bg-danger'}
+      break;
+    case (percentualGordura > 28 && percentualGordura <= 36):
+        return {'nivel':'MUITO RUIM', 'faixa':'25 a 36%', 'idade': '26 a 35', 'fundo': 'bg-danger'}
+      break;
+  
+    default:
+      break;
+  }
+}
+function percentual3645(percentualGordura){
+   switch (true) {
+    case (percentualGordura > 0 && percentualGordura <= 15):
+        return {'nivel':'EXCELENTE', 'faixa':'0 a 15%', 'idade': '36 a 45', 'fundo': 'bg-success'}
+      break;
+    case (percentualGordura > 15 && percentualGordura <= 19):
+        return {'nivel':'BOM', 'faixa':'15 a 19%', 'idade': '36 a 45', 'fundo': 'bg-success'}
+      break;
+    case (percentualGordura > 19 && percentualGordura <= 21):
+        return {'nivel':'ACIMA DA MÉDIA', 'faixa':'19 a 21%', 'idade': '36 a 45', 'fundo': 'bg-success'}
+      break;
+    case (percentualGordura > 21 && percentualGordura <= 23):
+        return {'nivel':'MEDIA', 'faixa':'21 a 23%', 'idade': '36 a 45', 'fundo': 'bg-warning'}
+      break;
+    case (percentualGordura > 24 && percentualGordura <= 26):
+        return {'nivel':'ABAIXO DA MÉDIA', 'faixa':'24 a 26%', 'idade': '36 a 45', 'fundo': 'bg-warning'}
+      break;
+    case (percentualGordura > 26 && percentualGordura <= 29):
+        return {'nivel':'RUIM', 'faixa':'26 a 29%', 'idade': '36 a 45', 'fundo': 'bg-danger'}
+      break;
+    case (percentualGordura > 29 && percentualGordura <= 39):
+        return {'nivel':'MUITO RUIM', 'faixa':'29 a 39%', 'idade': '36 a 45', 'fundo': 'bg-danger'}
+      break;
+  
+    default:
+      break;
+  }
+}
+function percentual4655(percentualGordura){
+   switch (true) {
+    case (percentualGordura > 0 && percentualGordura <= 18):
+        return {'nivel':'EXCELENTE', 'faixa':'0 a 18%', 'idade': '46 a 55', 'fundo': 'bg-success'}
+      break;
+    case (percentualGordura > 18 && percentualGordura <= 21):
+        return {'nivel':'BOM', 'faixa':'18 a 21%', 'idade': '46 a 55', 'fundo': 'bg-success'}
+      break;
+    case (percentualGordura > 21 && percentualGordura <= 23):
+        return {'nivel':'ACIMA DA MÉDIA', 'faixa':'21 a 23%', 'idade': '46 a 55', 'fundo': 'bg-success'}
+      break;
+    case (percentualGordura > 23 && percentualGordura <= 25):
+        return {'nivel':'MEDIA', 'faixa':'23 a 25%', 'idade': '46 a 55', 'fundo': 'bg-warning'}
+      break;
+    case (percentualGordura > 25 && percentualGordura <= 27):
+        return {'nivel':'ABAIXO DA MÉDIA', 'faixa':'25 a 27%', 'idade': '46 a 55', 'fundo': 'bg-warning'}
+      break;
+    case (percentualGordura > 27 && percentualGordura <= 30):
+        return {'nivel':'RUIM', 'faixa':'27 a 30%', 'idade': '46 a 55', 'fundo': 'bg-danger'}
+      break;
+    case (percentualGordura > 30 && percentualGordura <= 38):
+        return {'nivel':'MUITO RUIM', 'faixa':'30 a 38%', 'idade': '46 a 55', 'fundo': 'bg-danger'}
+      break;
+  
+    default:
+      break;
+  }
+}
+function percentual5665(percentualGordura){
+   switch (true) {
+    case (percentualGordura > 0 && percentualGordura <= 18):
+        return {'nivel':'EXCELENTE', 'faixa':'0 a 18%', 'idade': '56 acima', 'fundo': 'bg-success'}
+      break;
+    case (percentualGordura > 18 && percentualGordura <= 21):
+        return {'nivel':'BOM', 'faixa':'18 a 21%', 'idade': '56 acima', 'fundo': 'bg-success'}
+      break;
+    case (percentualGordura > 21 && percentualGordura <= 23):
+        return {'nivel':'ACIMA DA MÉDIA', 'faixa':'21 a 23%', 'idade': '56 acima', 'fundo': 'bg-success'}
+      break;
+    case (percentualGordura > 21 && percentualGordura <= 25):
+        return {'nivel':'MEDIA', 'faixa':'23 a 25%', 'idade': '56 acima', 'fundo': 'bg-warning'}
+      break;
+    case (percentualGordura > 26 && percentualGordura <= 28):
+        return {'nivel':'ABAIXO DA MÉDIA', 'faixa':'26 a 28%', 'idade': '56 acima', 'fundo': 'bg-warning'}
+      break;
+    case (percentualGordura > 28 && percentualGordura <= 31):
+        return {'nivel':'RUIM', 'faixa':'28 a 31%', 'idade': '56 acima', 'fundo': 'bg-danger'}
+      break;
+    case (percentualGordura > 31 && percentualGordura <= 38):
+        return {'nivel':'MUITO RUIM', 'faixa':'31 a 38%', 'idade': '56 acima', 'fundo': 'bg-danger'}
+      break;
+  
+    default:
+      break;
+  }
+}
   
 </script>
 
