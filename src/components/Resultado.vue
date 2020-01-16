@@ -23,7 +23,7 @@
                       <tr>
                         <td>Massa magra corporal aproximada</td>
                         <td>
-                          <span :class="fundoMassaMagra" class="badge">{{ massaMagra || " ... " }} Kg</span>
+                          <span :class="fundoMassaMagra" class="badge">{{ massaMagra || " ... " }} %</span>
                           
                         </td>
                         <td><span :class="fundoMassaMagra" class="badge">{{ textoMassaMagra || "..." }}</span></td>
@@ -32,7 +32,7 @@
                       <tr>
                         <td>Massa gorda corporal aproximada</td>
                         <td>
-                            <span :class="fundoMassaGorda" class="badge">{{ massaGorda || " ... " }} Kg</span>
+                            <span :class="fundoMassaGorda" class="badge">{{ massaGorda || " ... " }} %</span>
                         </td>
                         <td><span :class="fundoMassaGorda" class="badge">{{ textoMassaGorda || " ... " }}</span></td>
                       </tr>

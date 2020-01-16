@@ -107,8 +107,10 @@ export default {
       var quilosObjetivo = obj.edtQuilosObjetivo
       var rcq = cintura / quadril;
       var percentualGordura = 64 - ((20*altura)/cintura);
-      var massaMagra = peso * ( 0.01 * ( 100 - percentualGordura ));
-      var massaGorda = peso * ( 0.01 * percentualGordura);
+      var massaMagraBase = peso * ( 0.01 * ( 100 - percentualGordura ));
+      var massaGordaBase = peso * ( 0.01 * percentualGordura);
+      var massaMagra = (massaMagraBase * 100) / peso;
+      var massaGorda = (massaGordaBase * 100) / peso;
 
       var imc = peso / ((altura * 0.01)^2)
       // Escolha do sexo
@@ -120,7 +122,7 @@ export default {
       }
       // ---------------------------------------------------------
 
-      if(imc > 20.0 && imc <= 29.9){
+      if(imc > 0.0 && imc <= 29.9){
         fundoImc = 'bg-warning';
         textoImc = 'SOBREPESO';
       }else if(imc > 30.0 && imc <= 34.9){

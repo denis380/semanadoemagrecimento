@@ -14,7 +14,7 @@
       v-if="this.exibe"
       v-bind:gorduraCorporal      = 'resultados.gorduraCorporal'
       v-bind:fundoGorduraCorporal = 'resultados.percentual.fundo'
-      v-bind:textoGorduraCorporal = 'resultados.percentual.faixa'
+      v-bind:textoGorduraCorporal = 'resultados.percentual.nivel'
       v-bind:massaMagra           = 'resultados.massaMagra'
       v-bind:fundoMassaMagra      = 'resultados.fundoMassaMagra'
       v-bind:textoMassaMagra      = 'resultados.textoMassaMagra'
