@@ -30,6 +30,9 @@
       v-bind:taxaMetabolica       = 'resultados.taxaMetabolica'
       v-bind:objetivo             = 'resultados.objetivo'
       v-bind:textoObjetivo        = 'resultados.textoObjetivo'
+      v-bind:carboidratos         = 'resultados.carboidratos'
+      v-bind:proteinas            = 'resultados.proteinas'
+      v-bind:gorduras             = 'resultados.gorduras'
      
      />
 
@@ -86,7 +89,7 @@ export default {
 
 
       this.exibe = true;
-      console.log(this.resultados.rcq)
+      console.log(this.resultados)
     },
   }
 }

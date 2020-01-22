@@ -26,7 +26,7 @@
                           <span :class="fundoMassaMagra" class="badge">{{ massaMagra || " ... " }} %</span>
                           
                         </td>
-                        <td><span :class="fundoMassaMagra" class="badge">{{ textoMassaMagra || "..." }}</span></td>
+                        <td><span :class="fundoMassaMagra" class="badge">{{ textoMassaMagra || "..." }} Kg</span></td>
                       </tr>
     
                       <tr>
@@ -34,7 +34,7 @@
                         <td>
                             <span :class="fundoMassaGorda" class="badge">{{ massaGorda || " ... " }} %</span>
                         </td>
-                        <td><span :class="fundoMassaGorda" class="badge">{{ textoMassaGorda || " ... " }}</span></td>
+                        <td><span :class="fundoMassaGorda" class="badge">{{ textoMassaGorda || " ... " }} Kg</span></td>
                       </tr>
     
                       <tr>

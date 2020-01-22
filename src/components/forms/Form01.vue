@@ -74,19 +74,7 @@
                     </div>  
                 </div>
             </div>
-            <div class="row col-md-12">
-                <label class="col-md-6 ipt-radio">DORME MAL : </label>
-                <div class="" style='margin-left:0.3rem'>
-                    <div class="custom-control custom-radio input-group">
-                    <input v-model="iptDormeMal" value='nao' class="custom-control-input" type="radio" id="iptDormeMalNao" name="iptDormeMal" >
-                    <label for="iptDormeMalNao" class="custom-control-label">Não</label>
-                    </div>
-                    <div class="custom-control custom-radio input-group">
-                    <input v-model="iptDormeMal" value='sim' class="custom-control-input" type="radio" id="iptDormeMalSim" name="iptDormeMal">
-                    <label for="iptDormeMalSim" class="custom-control-label ">Sim</label>
-                    </div>  
-                </div>
-            </div>
+           
             <div class="row col-md-12">
                 <label class="col-md-6 ipt-radio" style="margin-top: -0.1rem;">SOFRE ESTRESSE DIÁRIO : </label>
                 <div class="" style='margin-left:0.3rem'>
@@ -216,20 +204,19 @@ export default {
   data () {
     return {
       iptSexo: "masculino",
-      edtIdade: "",
-      edtPeso: "",
-      edtAltura: "",
-      edtCircunferenciaCintura: "",
+      edtIdade: "27",
+      edtPeso: "75",
+      edtAltura: "170",
+      edtCircunferenciaCintura: "85",
       iptInsonia: "nao",
-      iptDormeMal: "nao",
       iptEstresse: "nao",
       iptSanfona: "nao",
       iptAlcool: "nao",
-      edtBiotipo: "",
-      edtExercicios: "0",
-      edtCircunferenciaQuadril: "",
-      edtObjetivo: "",
-      edtQuilosObjetivo: "",
+      edtBiotipo: "endomorfo",
+      edtExercicios: "2",
+      edtCircunferenciaQuadril: "80",
+      edtObjetivo: "manter",
+      edtQuilosObjetivo: "80",
     }
   },
     validations : {

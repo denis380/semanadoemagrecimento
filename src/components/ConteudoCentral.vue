@@ -51,7 +51,6 @@ export default {
       var circunferenciaCintura = obj.edtCircunferenciaCintura
       var exercicios = obj.edtExercicios
       var insonia = (obj.iptInsonia == "sim" ? 0.915 : 1);
-      var dormeMal = (obj.iptDormeMal == "sim" ? 0.915 : 1);
       var estresse = (obj.iptEstresse == "sim" ? 0.92 : 1);
       var sanfona = (obj.iptSanfona == "sim" ? 0.9 : 1);
       var alcool = (obj.iptAlcool == "sim" ? 0.95 : 1);
@@ -99,20 +98,23 @@ export default {
         var objetivo = "PERDER PESO"
       }
       if(obj.edtObjetivo == "manter"){
-        var objetivo = "MANTER O PESO"
+        var objetivo = "MANTER O PESO";
       }
       if(obj.edtObjetivo == "ganhar"){
-        var objetivo = "GANHAR PESO"
+        var objetivo = "GANHAR PESO";
       }
-      var quilosObjetivo = obj.edtQuilosObjetivo
+      var quilosObjetivo = obj.edtQuilosObjetivo;
       var rcq = cintura / quadril;
       var percentualGordura = 64 - ((20*altura)/cintura);
       var massaMagraBase = peso * ( 0.01 * ( 100 - percentualGordura ));
       var massaGordaBase = peso * ( 0.01 * percentualGordura);
       var massaMagra = (massaMagraBase * 100) / peso;
       var massaGorda = (massaGordaBase * 100) / peso;
+      var massaMagraKg = (peso / 100) * massaMagra;
+      var massaGordaKg = (peso / 100) * massaGorda;
+      var objetivoValor = obj.edtObjetivo;
 
-      var imc = peso / ((altura * 0.01)^2)
+      var imc = peso / ((altura * 0.01)^2);
       // Escolha do sexo
       if(sexo == "masculino"){
         var tmbBase = 66.5 + (13.75 * peso) + (5.003 * altura) - (6.775 * idade)
@@ -122,40 +124,43 @@ export default {
       }
       // ---------------------------------------------------------
 
-      if(imc > 0.0 && imc <= 29.9){
+      if(imc > 0 && imc <= 30){
         fundoImc = 'bg-warning';
         textoImc = 'SOBREPESO';
-      }else if(imc > 30.0 && imc <= 34.9){
+      }else if(imc > 30 && imc <= 35){
         fundoImc = 'bg-warning';
         textoImc = 'OBESIDADE GRAU I';
-      }else if(imc > 35.0 && imc <= 39.9){
+      }else if(imc > 35 && imc <= 40){
         textoImc = 'OBESIDADE GRAU II';
         fundoImc = 'bg-danger';
-      }else if(imc >= 40.0){
+      }else if(imc > 40){
         textoImc = 'OBESIDADE GRAU III';
         fundoImc = 'bg-danger';
+      }else{ 
+        textoImc = 'INDEFINIDO';
+        fundoImc = 'bg-ligth'
       }
       //
-      if(massaMagra > 20 && massaMagra <= 30){
-        fundoMassaMagra = 'bg-warning';
-        textoMassaMagra = 'MEDIO';
-      }else if(massaMagra > 31){
-        fundoMassaMagra = 'bg-danger';
-        textoMassaMagra = 'ALTO';
-      }else{
-        textoMassaMagra = 'BOM';
+      if(massaMagra < 90 && massaMagra >= 70){
         fundoMassaMagra = 'bg-success';
+        textoMassaMagra = massaMagraKg;
+      }else if(massaMagra < 70){
+        fundoMassaMagra = 'bg-warning';
+        textoMassaMagra = massaMagraKg;
+      }else{
+        fundoMassaMagra = 'bg-danger';
+        textoMassaMagra = massaMagraKg;
       }
       //
-      if(massaGorda > 20 && massaGorda <= 30){
-        fundoMassaGorda = 'bg-warning';
-        textoMassaGorda = 'MEDIO';
-      }else if(massaGorda > 31){
-        fundoMassaGorda = 'bg-danger';
-        textoMassaGorda = 'ALTO';
-      }else{
-        textoMassaGorda = 'BOM';
+      if(massaGorda > 0 && massaGorda <= 10){
         fundoMassaGorda = 'bg-success';
+        textoMassaGorda = massaGordaKg;
+      }else if(massaGorda > 10 && massaGorda <= 30){
+        fundoMassaGorda = 'bg-warning';
+        textoMassaGorda = massaGordaKg;
+      }else{
+        fundoMassaGorda = 'bg-warning';
+        textoMassaGorda = massaGordaKg;
       }
 
       switch (true) {
@@ -245,6 +250,9 @@ export default {
       var tmbBase2 = tmbBase1 * insonia * estresse * sanfona * alcool;
 
       var taxaMetabolica = tmbBase2 + exercicios
+      var carboidratos = getCarboidratos(taxaMetabolica, objetivoValor);
+      var proteinas = getProteinas(taxaMetabolica, objetivoValor);
+      var gorduras = getGorduras(taxaMetabolica, objetivoValor);
       var $arrayResult = {};
       $arrayResult = {
         'taxaMetabolica': parseFloat(taxaMetabolica.toFixed(2)),
@@ -265,10 +273,14 @@ export default {
         'fundoGorduraCorporal': fundoGorduraCorporal,
         'textoGorduraCorporal': textoGorduraCorporal,
         'percentual' : percentual,
-        'respostaRcq' : respostaRcq
+        'respostaRcq' : respostaRcq,
+        'carboidratos' : parseFloat(carboidratos.toFixed(2)),
+        'proteinas' : parseFloat(proteinas.toFixed(2)),
+        'gorduras' : parseFloat(gorduras.toFixed(2))
+
 
         }
-        console.log(percentual.fundo);
+        //console.log(percentual.fundo);
       
       this.$emit('exibeResult', $arrayResult)
     },
@@ -718,6 +730,67 @@ function frcq5969(rcq){
         return {'nivel':'MUITO ALTO', 'fundo': 'bg-danger'}
       break;
   }
+}
+function getProteinas(taxaMetabolica, objetivo){
+  var proteinas = ((taxaMetabolica / 100 ) * 35) / 4;
+  switch (objetivo) {
+    case 'perder':
+      return proteinas;
+      break;
+    case 'manter':
+      
+      return proteinas;
+      break;
+    case 'ganhar':
+      
+      return proteinas;
+      break;
+  
+    default:
+      break;
+  }
+}
+function getCarboidratos(taxaMetabolica, objetivo){
+  //ajeitar a porcentagem
+  var carboidratos = ((taxaMetabolica / 100 ) * 45) / 4;
+    switch (objetivo) {
+    case 'perder':
+      carboidratos = carboidratos * 0.75;
+      return carboidratos;
+      break;
+    case 'manter':
+      return carboidratos;
+      break;
+    case 'ganhar':
+      
+      return carboidratos;
+      break;
+  
+    default:
+      break;
+  }
+}
+function getGorduras(taxaMetabolica, objetivo){
+    //ajeitar a porcentagem
+  var gorduras = ((taxaMetabolica / 100 ) * 20) / 9;
+    switch (objetivo) {
+    case 'perder':
+      gorduras = gorduras * 0.75;
+      return gorduras;
+      break;
+    case 'manter':
+    
+      return gorduras;
+      break;
+    case 'ganhar':
+      
+      return gorduras;
+      break;
+  
+    default:
+      break;
+  }
+
 }
 
 
