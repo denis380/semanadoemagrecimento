@@ -23,18 +23,18 @@
                       <tr>
                         <td>Massa magra corporal aproximada</td>
                         <td>
-                          <span :class="fundoMassaMagra" class="badge">{{ massaMagra || " ... " }} %</span>
+                          <span :class="fundoMassaMagra" class="badge">{{ massaMagra || " ... " }} kg</span>
                           
                         </td>
-                        <td><span :class="fundoMassaMagra" class="badge">{{ textoMassaMagra || "..." }} Kg</span></td>
+                        <td><span :class="fundoMassaMagra" class="badge">{{ textoMassaMagra || "..." }} </span></td>
                       </tr>
     
                       <tr>
                         <td>Massa gorda corporal aproximada</td>
                         <td>
-                            <span :class="fundoMassaGorda" class="badge">{{ massaGorda || " ... " }} %</span>
+                            <span :class="fundoMassaGorda" class="badge">{{ massaGorda || " ... " }} kg</span>
                         </td>
-                        <td><span :class="fundoMassaGorda" class="badge">{{ textoMassaGorda || " ... " }} Kg</span></td>
+                        <td><span :class="fundoMassaGorda" class="badge">{{ textoMassaGorda || " ... " }} </span></td>
                       </tr>
     
                       <tr>
@@ -84,23 +84,28 @@
                         </tr>
                         <tr >
                           <p class="top-3">
-                            {{ textoObjetivo || " ... " }}
+                            Para isso, fique atento à quantidade de macronutrientes que
+                            você deve ingerir para conseguir {{ textoObjetivo || "..." }} os {{ kgObjetivo || "0" }} kgs que deseja:
                           </p>
                         </tr>
                       </tbody>
                     </table>
                     <div class="col-md-12 row top-3">
-                      <div class="col-md-4">
+                      <div class="col-md-3">
                         <label for="">Proteínas</label>
                         <div class="bg-success">{{ proteinas ||  " ... "  }} <span class="badge">gr/dia</span></div>
                       </div>
-                      <div class="col-md-4">
+                      <div class="col-md-3">
                         <label for="">Carboidratos</label>
                         <div class="bg-success">{{ carboidratos || " ... " }} <span class="badge">gr/dia</span></div>
                       </div>
-                      <div class="col-md-4">
+                      <div class="col-md-3">
                         <label for="">Gorduras</label>
                         <div class="bg-success">{{ gorduras || " ... " }} <span class="badge">gr/dia</span></div>
+                      </div>
+                      <div class="col-md-3">
+                        <label for="">Água</label>
+                        <div class="bg-success">{{ agua || " ... " }} <span class="badge">Lts/dia</span></div>
                       </div>
                     </div>
                   <!--  -->
@@ -134,12 +139,14 @@ export default {
     "taxaMetabolica",
     "objetivo",
     "textoObjetivo",
+    "kgObjetivo",
     "proteinas",
     "carboidratos",
     "gorduras",
     "textoRcq",
     "fundoRcq",
-    "rcq"
+    "rcq",
+    "agua"
   ],
   data () {
     return {

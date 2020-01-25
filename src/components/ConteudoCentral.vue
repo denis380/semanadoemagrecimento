@@ -43,7 +43,7 @@ export default {
       var respostaRcq;
       var percentualGordura;
 
-
+      var kgObjetivo = obj.edtQuilosObjetivo;
       var sexo = obj.iptSexo
       var idade = obj.edtIdade
       var peso = obj.edtPeso
@@ -69,22 +69,25 @@ export default {
       }
       switch (exercicios) {
         case '1':
-          exercicios = 196.875;
+          exercicios = 0;
           break;
         case '2':
-          exercicios = 393.75;
+          exercicios = 165;
           break;
         case '3':
-          exercicios = 135;
+          exercicios = 225;
           break;
         case '4':
-          exercicios = 341.25;
+          exercicios = 341;
           break;
         case '5':
-          exercicios = 525;
+          exercicios = 459;
           break;
         case '6':
-          exercicios = 708.75;
+          exercicios = 630;
+          break;
+        case '7':
+          exercicios = 1063;
           break;
       
         default:
@@ -117,13 +120,12 @@ export default {
       var imc = peso / ((altura * 0.01)^2);
       // Escolha do sexo
       if(sexo == "masculino"){
-        var tmbBase = 66.5 + (13.75 * peso) + (5.003 * altura) - (6.775 * idade)
+        var tmbBase = parseInt(66.5 + (13.75 * peso) + (5.003 * altura) - (6.775 * idade));
       }
       if(sexo == "feminino"){
-        var tmbBase = 655.1 + (9.563 * peso) + (1.850 * altura) - (4.676 * idade)
+        var tmbBase = parseInt(655.1 + (9.563 * peso) + (1.850 * altura) - (4.676 * idade));
       }
       // ---------------------------------------------------------
-
       if(imc > 0 && imc <= 30){
         fundoImc = 'bg-warning';
         textoImc = 'SOBREPESO';
@@ -143,24 +145,24 @@ export default {
       //
       if(massaMagra < 90 && massaMagra >= 70){
         fundoMassaMagra = 'bg-success';
-        textoMassaMagra = massaMagraKg;
+        textoMassaMagra = 'BOM';
       }else if(massaMagra < 70){
         fundoMassaMagra = 'bg-warning';
-        textoMassaMagra = massaMagraKg;
+        textoMassaMagra = 'MEDIA';
       }else{
         fundoMassaMagra = 'bg-danger';
-        textoMassaMagra = massaMagraKg;
+        textoMassaMagra = 'RUIM';
       }
       //
       if(massaGorda > 0 && massaGorda <= 10){
         fundoMassaGorda = 'bg-success';
-        textoMassaGorda = massaGordaKg;
+        textoMassaGorda = 'BOM';
       }else if(massaGorda > 10 && massaGorda <= 30){
         fundoMassaGorda = 'bg-warning';
-        textoMassaGorda = massaGordaKg;
+        textoMassaGorda = 'MEDIA';
       }else{
         fundoMassaGorda = 'bg-warning';
-        textoMassaGorda = massaGordaKg;
+        textoMassaGorda = 'RUIM';
       }
 
       switch (true) {
@@ -244,7 +246,7 @@ export default {
       
 
       // Acrescentando o biotipo
-      var tmbBase1 = tmbBase * biotipo;
+      var tmbBase1 = parseInt(tmbBase * biotipo);
 
       // Acrescentando os habitos
       var tmbBase2 = tmbBase1 * insonia * estresse * sanfona * alcool;
@@ -253,31 +255,34 @@ export default {
       var carboidratos = getCarboidratos(taxaMetabolica, objetivoValor);
       var proteinas = getProteinas(taxaMetabolica, objetivoValor);
       var gorduras = getGorduras(taxaMetabolica, objetivoValor);
+      var agua = getAgua(peso, objetivoValor);
       var $arrayResult = {};
       $arrayResult = {
-        'taxaMetabolica': parseFloat(taxaMetabolica.toFixed(2)),
+        'taxaMetabolica': parseFloat(taxaMetabolica.toFixed(1)),
         'objetivo': objetivo,
-        'imc': parseFloat(imc.toFixed(2)),
+        'textoObjetivo': obj.edtObjetivo,
+        'kgObjetivo': kgObjetivo,
+        'imc': parseFloat(imc.toFixed(1)),
         'fundoImc': fundoImc,
         'textoImc': textoImc,
-        'rcq': parseFloat(rcq.toFixed(2)),
+        'rcq': parseFloat(rcq.toFixed(1)),
         'fundoRcq': fundoRcq,
         'textoRcq': textoRcq,
-        'massaMagra': parseFloat(massaMagra.toFixed(2)),
+        'massaMagra': parseFloat(massaMagraKg.toFixed(1)),
         'textoMassaMagra': textoMassaMagra,
         'fundoMassaMagra': fundoMassaMagra,
-        'massaGorda': parseFloat(massaGorda.toFixed(2)),
+        'massaGorda': parseFloat(massaGordaKg.toFixed(1)),
         'textoMassaGorda': textoMassaGorda,
         'fundoMassaGorda': fundoMassaGorda,
-        'gorduraCorporal': parseFloat(percentualGordura.toFixed(2)),
+        'gorduraCorporal': parseFloat(percentualGordura.toFixed(1)),
         'fundoGorduraCorporal': fundoGorduraCorporal,
         'textoGorduraCorporal': textoGorduraCorporal,
         'percentual' : percentual,
         'respostaRcq' : respostaRcq,
-        'carboidratos' : parseFloat(carboidratos.toFixed(2)),
-        'proteinas' : parseFloat(proteinas.toFixed(2)),
-        'gorduras' : parseFloat(gorduras.toFixed(2))
-
+        'carboidratos' : parseInt(carboidratos),
+        'proteinas' : parseInt(proteinas),
+        'gorduras' : parseInt(gorduras),
+        'agua': parseFloat(agua.toFixed(1))
 
         }
         //console.log(percentual.fundo);
@@ -732,17 +737,16 @@ function frcq5969(rcq){
   }
 }
 function getProteinas(taxaMetabolica, objetivo){
-  var proteinas = ((taxaMetabolica / 100 ) * 35) / 4;
+  var proteinas = ((taxaMetabolica / 100 ) * 30) / 4;
   switch (objetivo) {
     case 'perder':
       return proteinas;
       break;
     case 'manter':
-      
       return proteinas;
       break;
     case 'ganhar':
-      
+      proteinas = (((taxaMetabolica / 100 ) * 35) / 4) * 1.2;
       return proteinas;
       break;
   
@@ -752,17 +756,17 @@ function getProteinas(taxaMetabolica, objetivo){
 }
 function getCarboidratos(taxaMetabolica, objetivo){
   //ajeitar a porcentagem
-  var carboidratos = ((taxaMetabolica / 100 ) * 45) / 4;
+  var carboidratos = ((taxaMetabolica / 100 ) * 50) / 4;
     switch (objetivo) {
     case 'perder':
-      carboidratos = carboidratos * 0.75;
+      carboidratos = carboidratos * 0.7;
       return carboidratos;
       break;
     case 'manter':
       return carboidratos;
       break;
     case 'ganhar':
-      
+      carboidratos = (((taxaMetabolica / 100 ) * 45) / 4) * 1.7;
       return carboidratos;
       break;
   
@@ -779,18 +783,36 @@ function getGorduras(taxaMetabolica, objetivo){
       return gorduras;
       break;
     case 'manter':
-    
       return gorduras;
       break;
     case 'ganhar':
-      
+      gorduras = gorduras * 0.9;
       return gorduras;
       break;
   
     default:
       break;
   }
-
+}
+function getAgua(peso, objetivo){
+  var agua;
+  switch (objetivo) {
+    case 'perder':
+      agua = peso * 0.06;
+      return agua;
+      break;
+    case 'manter':
+      agua = peso * 0.05;
+      return agua;
+      break;
+    case 'ganhar':
+      agua = peso * 0.07;
+      return agua;
+      break;
+  
+    default:
+      break;
+  } 
 }
 
 

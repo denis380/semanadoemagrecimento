@@ -62,7 +62,7 @@
           <div class="col-md-5">
     
             <div class="row col-md-12">
-                <label class="col-md-6 ipt-radio">TÊM INSÔNIA: </label>
+                <label class="col-md-6 ipt-radio">DORME MAL / INSÔNIA: </label>
                 <div class="" style='margin-left:0.3rem'>
                     <div class="custom-control custom-radio input-group">
                     <input v-model="iptInsonia" value='nao' class="custom-control-input" type="radio" id="iptInsoniaNao" name="iptInsonia" >
@@ -76,7 +76,7 @@
             </div>
            
             <div class="row col-md-12">
-                <label class="col-md-6 ipt-radio" style="margin-top: -0.1rem;">SOFRE ESTRESSE DIÁRIO : </label>
+                <label class="col-md-6 ipt-radio" style="margin-top: -0.1rem;">SOFRE ESTRESSE DIARIAMENTE : </label>
                 <div class="" style='margin-left:0.3rem'>
                     <div class="custom-control custom-radio input-group ">
                     <input v-model="iptEstresse" value='nao' class="custom-control-input" type="radio" id="iptEstresseNao" name="iptEstresse" >
@@ -89,7 +89,7 @@
                 </div>
             </div>
             <div class="row col-md-12">
-                <label class="col-md-6 ipt-radio" style="margin-top: -0.1rem;">SOFRE EFEITO SANFONA : </label>
+                <label class="col-md-6 ipt-radio" style="margin-top: -0.1rem;">HISTORICO DE EFEITO SANFONA : </label>
                 <div class="" style='margin-left:0.3rem'>
                     <div class="custom-control custom-radio input-group ">
                     <input v-model="iptSanfona" value='nao' class="custom-control-input" type="radio" id="iptSanfonaNao" name="iptSanfona" >
@@ -129,6 +129,27 @@
         <label class="title">Genética e objetivos: Deixe eu conhecer você um pouco mais... </label>
         <div class="row col-md-12 info-box">
             <div class="col-md-5">
+            <div class="card">
+              <div class="textoExercicios row">
+                <span v-if="edtExercicios == 1" class="small" style="margin-left:0.5rem;margin-top:0.3rem">{{ texto01 }}</span>
+                <span v-if="edtExercicios == 2" class="small" style="margin-left:0.5rem;margin-top:0.3rem">{{ texto02 }}</span>
+                <span v-if="edtExercicios == 3" class="small" style="margin-left:0.5rem;margin-top:0.3rem">{{ texto03 }}</span>
+                <span v-if="edtExercicios == 4" class="small" style="margin-left:0.5rem;margin-top:0.3rem">{{ texto04 }}</span>
+                <span v-if="edtExercicios == 5" class="small" style="margin-left:0.5rem;margin-top:0.3rem">{{ texto05 }}</span>
+                <span v-if="edtExercicios == 6" class="small" style="margin-left:0.5rem;margin-top:0.3rem">{{ texto06 }}</span>
+                <span v-if="edtExercicios == 7" class="small" style="margin-left:0.5rem;margin-top:0.3rem">{{ texto07 }}</span>
+              </div>
+            </div>
+
+            <div class="row" id="sliderEx">
+                <label for="edtExexcicios" class="col-md-4 descricao" style="margin-top:-0.4rem">EXERCÍCIOS DIARIOS :</label>
+                <span class="col-sm-5 ipt">
+                    <input v-model="edtExercicios" type="range" class="custom-range custom-range-danger" id="edtExexcicios" min="1" max="6" data-toggle="tooltip" data-placement="top" :title='texto01'>
+                </span>
+                <span class="descricao" style="margin-left:0.5rem;margin-top:0.3rem">{{ edtExercicios }}</span>
+
+            </div>
+            
     
             <div class="row">
                 <label class="col-md-4 sexo">SEU BIOTIPO :</label>
@@ -140,15 +161,6 @@
                         <option value="endomorfo">Endomorfo</option>
                       </select>
                   </span>
-            </div>
-    
-            <div class="row">
-                <label for="edtExexcicios" class="col-md-4 descricao" style="margin-top:-0.4rem">EXERCÍCIOS DIARIOS :</label>
-                <span class="col-sm-5 ipt">
-                    <input v-model="edtExercicios" type="range" class="custom-range custom-range-danger" id="edtExexcicios" min="1" max="6">
-                </span>
-                <span class="descricao" style="margin-left:0.5rem;margin-top:0.3rem">{{ edtExercicios }}</span>
-
             </div>
             <div class="row">
                 <label for="edtCircunferenciaQuadril" class="col-md-4 descricao" style="margin-top:-0.3rem">CIRCUNFERÊNCIA DO QUADRIL :</label>
@@ -204,19 +216,27 @@ export default {
   data () {
     return {
       iptSexo: "masculino",
-      edtIdade: "27",
-      edtPeso: "75",
-      edtAltura: "170",
-      edtCircunferenciaCintura: "85",
+      edtIdade: "",
+      edtPeso: "",
+      edtAltura: "",
+      edtCircunferenciaCintura: "",
       iptInsonia: "nao",
       iptEstresse: "nao",
       iptSanfona: "nao",
       iptAlcool: "nao",
-      edtBiotipo: "endomorfo",
-      edtExercicios: "2",
-      edtCircunferenciaQuadril: "80",
-      edtObjetivo: "manter",
-      edtQuilosObjetivo: "80",
+      edtBiotipo: "",
+      edtExercicios: "1",
+      edtCircunferenciaQuadril: "",
+      edtObjetivo: "",
+      edtQuilosObjetivo: "",
+      texto01: 'Muito sedentário: Não faz nenhum tipo exercício, nem mesmo tarefas básicas do lar.',
+      texto02: 'Sedentário: Não faz nenhum tipo exercício, porém executa tarefas básicas e afazeres do lar',
+      texto03: 'Pouco sedentário: Pratica exercícios físicos 1 ou 2 dias/semana, e executa tarefas e afazeres do lar',
+      texto04: 'Pouco ativo: Pratica exercícios leves (caminhada, pilates, hidro) no mínimo 2 ou 3 dias/semana, + tarefas do lar',
+      texto05: 'Ativo: Pratica exercícios aeróbicos e/ou exercícios de força no mínimo 3 ou 4 dias/semana + tarefas lar',
+      texto06: 'Muito Ativo: Pratica exercícios aeróbicos e/ou exercícios de força  no mínimo 5 ou 6 dias/semana',
+      texto07: 'Atleta:  Pratica exercícios aeróbicos e exercícios de força com alta intensidade todos os dias da semana.',
+  
     }
   },
     validations : {
@@ -266,6 +286,7 @@ export default {
     }
   },
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -295,6 +316,11 @@ export default {
   }
   .row{
     margin-top: 1rem;
+  }
+  .textoExercicios{
+    padding-bottom: 2%;
+    width: 70%;
+    margin-left: 10%;
   }
 
 </style>

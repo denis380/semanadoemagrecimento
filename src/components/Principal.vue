@@ -29,10 +29,12 @@
       v-bind:fundoRcq             = 'resultados.respostaRcq.fundo'  
       v-bind:taxaMetabolica       = 'resultados.taxaMetabolica'
       v-bind:objetivo             = 'resultados.objetivo'
-      v-bind:textoObjetivo        = 'resultados.textoObjetivo'
       v-bind:carboidratos         = 'resultados.carboidratos'
       v-bind:proteinas            = 'resultados.proteinas'
       v-bind:gorduras             = 'resultados.gorduras'
+      v-bind:textoObjetivo        = 'resultados.textoObjetivo'
+      v-bind:kgObjetivo           = 'resultados.kgObjetivo'
+      v-bind:agua                 = 'resultados.agua'
      
      />
 
