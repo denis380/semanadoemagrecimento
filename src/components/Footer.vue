@@ -10,24 +10,26 @@
                                 <Espaco espacos='esquerda-4'/>
                                 <Social fundo='dark' logo='instagram' link='https://www.instagram.com/diogorodrigueste/' />
                                 <Espaco espacos='esquerda-4'/>
-                                <Social fundo='info' logo='linkedin' link='' />
+                                <Social fundo='info' logo='linkedin' link='https://www.linkedin.com/in/diogo-rodrigueste-7b8bb8117/' />
                                 <Espaco espacos='esquerda-4'/>
                                 <Social fundo='danger' logo='youtube' link='https://www.youtube.com/channel/UCJvGEBaZB1yKnyI5uGi1k1A' />
                                 <Espaco espacos='esquerda-4'/>
                                 <Social fundo='success' logo='spotify' link='https://open.spotify.com/show/19jQDLzQfFvhR981amCcCG' />
                                 <Espaco espacos='esquerda-4'/>
-                                <Social fundo='warning' logo='soundcloud' link='#' />
+                                <Social fundo='warning' logo='soundcloud' link='https://soundcloud.com/diogorodrigueste' />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="small-box-footer">
-                    <a href="#"><small class="span-footer">SuperSaudeJá 2019</small></a>
+               <a href="https://bit.ly/2tQwHsK" target="blank"><small class="span-footer">Desenvolvido por: @DenisSantos</small></a>
                <Espaco espacos='direita-3'/>
-               <a href="#"> <small class="span-footer">Privacidade</small></a>
+               <a href="#"><small class="span-footer">SuperSaudeJá 2019</small></a>
                <Espaco espacos='direita-3'/>
-               <a href="#"><small class="span-footer">Termos de uso</small></a>
+               <a href="https://supersaudeja.000webhostapp.com/politicas" target="blank"> <small class="span-footer">Privacidade</small></a>
+               <Espaco espacos='direita-3'/>
+               <a href="https://supersaudeja.000webhostapp.com/termos" target="blank"><small class="span-footer">Termos de uso</small></a>
             </div>
             
         </div>
