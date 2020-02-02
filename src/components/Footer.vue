@@ -23,7 +23,9 @@
                 </div>
             </div>
             <div class="small-box-footer">
-                    <a href="#"><small class="span-footer">SuperSaudeJá 2019</small></a>
+               <a href="https://bit.ly/2tQwHsK" target="blank"><small class="span-footer">Desenvolvido por: @DenisSantos</small></a>
+               <Espaco espacos='direita-3'/>
+               <a href="#"><small class="span-footer">SuperSaudeJá 2019</small></a>
                <Espaco espacos='direita-3'/>
                <a href="https://supersaudeja.000webhostapp.com/politicas" target="blank"> <small class="span-footer">Privacidade</small></a>
                <Espaco espacos='direita-3'/>

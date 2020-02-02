@@ -30,11 +30,11 @@ export default {
 <style scoped>
   .subtitle{
     color: beige;
+    font-size: 2.5rem;
   }
   .content{
     color: beige;
-    
-    font-weight:lighter;
+    font-size: 1.6rem;
     font-style: normal !important;
     font-family:Arial, Helvetica, sans-serif !important;
 

@@ -47,7 +47,7 @@ export default {
       var sexo = obj.iptSexo
       var idade = obj.edtIdade
       var peso = obj.edtPeso
-      var altura = obj.edtAltura
+      var altura = obj.edtAltura.replace(".", "");
       var circunferenciaCintura = obj.edtCircunferenciaCintura
       var exercicios = obj.edtExercicios
       var insonia = (obj.iptInsonia == "sim" ? 0.915 : 1);
@@ -108,7 +108,11 @@ export default {
       }
       var quilosObjetivo = obj.edtQuilosObjetivo;
       var rcq = cintura / quadril;
-      var percentualGordura = 64 - ((20*altura)/cintura);
+      if(sexo == "masculino"){
+        var percentualGordura = 64 - ((20*altura)/cintura);
+      }else{
+        var percentualGordura = 76 - ((20*altura)/cintura);
+      }
       var massaMagraBase = peso * ( 0.01 * ( 100 - percentualGordura ));
       var massaGordaBase = peso * ( 0.01 * percentualGordura);
       var massaMagra = (massaMagraBase * 100) / peso;
@@ -120,10 +124,10 @@ export default {
       var imc = peso / ((altura * 0.01)^2);
       // Escolha do sexo
       if(sexo == "masculino"){
-        var tmbBase = parseInt(66.5 + (13.75 * peso) + (5.003 * altura) - (6.775 * idade));
+        var tmbBase = 66.5 + (13.75 * peso) + (5.003 * altura) - (6.775 * idade);
       }
       if(sexo == "feminino"){
-        var tmbBase = parseInt(655.1 + (9.563 * peso) + (1.850 * altura) - (4.676 * idade));
+        var tmbBase = 655.1 + (9.563 * peso) + (1.850 * altura) - (4.676 * idade);
       }
       // ---------------------------------------------------------
       if(imc > 0 && imc <= 30){
@@ -181,7 +185,7 @@ export default {
           }
           break;
         case (idade <= 45) :
-          if(sexo == 'masculinoM'){
+          if(sexo == 'masculino'){
             percentual = percentual3645(percentualGordura);
           }else{
             percentual = fpercentual3645(percentualGordura);
