@@ -4,6 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Vuelidate from "vuelidate"
+import vuetify from '@/plugins/vuetify'
+
+
+
 
 Vue.config.productionTip = false
 Vue.use(Vuelidate)
@@ -11,6 +15,11 @@ Vue.use(Vuelidate)
 new Vue({
   el: '#app',
   router,
+  vuetify,
   components: { App },
   template: '<App/>'
 })
+
+// new Vue({
+//   vuetify,
+// }).$mount('#app')

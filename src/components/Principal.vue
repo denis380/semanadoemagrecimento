@@ -1,7 +1,6 @@
 <template>
   <div class="principal">
     <cabecalho-principal />
-
     <texto-central 
       title='Seja bem vindo ao Termômetro S2já!' 
       texto= 'Aqui você ira descobrir como está a saúde do seu metabolismo de forma simples, rápida e direta. 
@@ -12,14 +11,29 @@
 
     <Resultado
       v-if="this.exibe"
-      v-bind:gorduraCorporal = 'resultados.gorduraCorporal'
-      v-bind:massaMagra = 'resultados.massaMagra'
-      v-bind:massaGorda = 'resultados.massaGorda'
-      v-bind:imc = 'resultados.imc'
-      v-bind:rcq = 'resultados.rcq'
-      v-bind:taxaMetabolica = 'resultados.taxaMetabolica'
-      v-bind:objetivo = 'resultados.objetivo'
-      v-bind:textoObjetivo = 'resultados.textoObjetivo'
+      v-bind:gorduraCorporal      = 'resultados.gorduraCorporal'
+      v-bind:fundoGorduraCorporal = 'resultados.percentual.fundo'
+      v-bind:textoGorduraCorporal = 'resultados.percentual.nivel'
+      v-bind:massaMagra           = 'resultados.massaMagra'
+      v-bind:fundoMassaMagra      = 'resultados.fundoMassaMagra'
+      v-bind:textoMassaMagra      = 'resultados.textoMassaMagra'
+      v-bind:massaGorda           = 'resultados.massaGorda'
+      v-bind:fundoMassaGorda      = 'resultados.fundoMassaGorda'
+      v-bind:textoMassaGorda      = 'resultados.textoMassaGorda'
+      v-bind:imc                  = 'resultados.imc'
+      v-bind:fundoImc             = 'resultados.fundoImc'
+      v-bind:textoImc             = 'resultados.textoImc'
+      v-bind:rcq                  = 'resultados.rcq'  
+      v-bind:textoRcq             = 'resultados.respostaRcq.nivel'  
+      v-bind:fundoRcq             = 'resultados.respostaRcq.fundo'  
+      v-bind:taxaMetabolica       = 'resultados.taxaMetabolica'
+      v-bind:objetivo             = 'resultados.objetivo'
+      v-bind:carboidratos         = 'resultados.carboidratos'
+      v-bind:proteinas            = 'resultados.proteinas'
+      v-bind:gorduras             = 'resultados.gorduras'
+      v-bind:textoObjetivo        = 'resultados.textoObjetivo'
+      v-bind:kgObjetivo           = 'resultados.kgObjetivo'
+      v-bind:agua                 = 'resultados.agua'
      
      />
 
@@ -28,6 +42,7 @@
 </template>
 
 <script>
+
 import CabecalhoPrincipal from '@/components/cabecalhos/CabecalhoPrincipal'
 import TextoCentral from '@/components/cabecalhos/TextoCentral'
 import ConteudoCentral from '@/components/ConteudoCentral'
@@ -44,8 +59,7 @@ export default {
     TextoCentral,
     ConteudoCentral,
     Footer,
-    Resultado
-
+    Resultado,
   },
   props:[
     'resultados',
@@ -73,10 +87,7 @@ export default {
         default:
           break;
       }
-
-
       this.exibe = true;
-      console.log(this.resultados.rcq)
     },
   }
 }
