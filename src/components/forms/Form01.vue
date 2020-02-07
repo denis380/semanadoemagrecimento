@@ -201,7 +201,7 @@
       <!-- /form 03 -->
       <hr class="hr">
 
-      <button class="btn btn-block bg-gradient-warning btn-lg">CALCULAR</button>
+      <button class="btn btn-block bg-gradient-warning btn-lg" id="index.html#focus">CALCULAR</button>
     </form>
 
 </template>
@@ -218,19 +218,19 @@ export default {
   data () {
     return {
       iptSexo: "masculino",
-      edtIdade: "27",
-      edtPeso: "75",
-      edtAltura: "170",
-      edtCircunferenciaCintura: "80",
+      edtIdade: "",
+      edtPeso: "",
+      edtAltura: "",
+      edtCircunferenciaCintura: "",
       iptInsonia: "nao",
       iptEstresse: "nao",
       iptSanfona: "nao",
       iptAlcool: "nao",
-      edtBiotipo: "mesomorfo",
+      edtBiotipo: "",
       edtExercicios: "1",
-      edtCircunferenciaQuadril: "92",
-      edtObjetivo: "perder",
-      edtQuilosObjetivo: "10",
+      edtCircunferenciaQuadril: "",
+      edtObjetivo: "",
+      edtQuilosObjetivo: "",
       texto01: 'Muito sedentário: Não faz nenhum tipo exercício, nem mesmo tarefas básicas do lar.',
       texto02: 'Sedentário: Não faz nenhum tipo exercício, porém executa tarefas básicas e afazeres do lar',
       texto03: 'Pouco sedentário: Pratica exercícios físicos 1 ou 2 dias/semana, e executa tarefas e afazeres do lar',

@@ -5,7 +5,7 @@
                 <div class="card-header">
                     <span class="labelResultados">Veja agora o seu resultado em nosso termômetro S2já</span>
                 </div>
-                <h5 class="card-title main titulo">Esta é sua composição corporal estimada:</h5>
+                <h5 class="card-title main titulo top-3" id="focus" name="focus">Esta é sua composição corporal estimada:</h5>
                 <!-- /.card-header -->
                 <div class="card-body">
                   <table class="table table-bordered">
@@ -60,7 +60,7 @@
                   </table>
                   <!--  -->
                   <div class="card-header">
-                    <h5 class="text-center titulo">Esta é sua taxa metabólica basal estimada: </h5>
+                    <h5 class="text-center titulo top-3">Esta é sua taxa metabólica basal estimada: </h5>
                   </div>
                   <div class="card">
                     <table class="margin-full">
@@ -93,58 +93,66 @@
                       </table>
 
                   </div>
-                  <!-- <div class="card-header">
-                    <h5 class="text-center">SEU OBJETIVO É: </h5>
+ 
+                  <div class="col-md-12 row top-3">
+                    <div class="col-md-6">
+                      <btn-input 
+                        borda = "border-danger"
+                        descricao = "Proteinas"
+                        :conteudo = "'min: ' + proteinas + ' gr/dia'"
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <btn-input 
+                        borda = "border-dark"
+                        descricao = "Carboidratos"
+                        :conteudo = "'max: ' + carboidratos + ' gr/dia'"
+                      />
+                    </div>
                   </div>
-                  <table class="table table-bordered">
-                      <tbody>
-                        <tr>
-                          <td class="bg-black">
-                            {{ objetivo || " ..." }}
-                          </td>
-                        </tr>
-                        <tr >
-                          <p class="top-3">
-                            Para isso, fique atento à quantidade de macronutrientes que
-                            você deve ingerir para conseguir {{ textoObjetivo || "..." }} os {{ kgObjetivo || "0" }} kgs que deseja:
-                          </p>
-                        </tr>
-                      </tbody>
-                    </table> -->
-                    <div class="col-md-12 row top-3">
-                      <div class="col-md-6">
-                        <btn-input 
-                          borda = "border-danger"
-                          descricao = "Proteinas"
-                          :conteudo = "'min: ' + proteinas + ' gr/dia'"
-                        />
-                      </div>
-                      <div class="col-md-6">
-                        <btn-input 
-                          borda = "border-dark"
-                          descricao = "Carboidratos"
-                          :conteudo = "'max: ' + carboidratos + ' gr/dia'"
-                        />
-                      </div>
+                  <div class="col-md-12 row top-3">
+                    <div class="col-md-6">
+                      <btn-input 
+                        borda = "border-danger"
+                        descricao = "Gorduras"
+                        :conteudo = "'min: ' + gorduras + ' gr/dia'"
+                      />
                     </div>
-                    <div class="col-md-12 row top-3">
-                      <div class="col-md-6">
-                        <btn-input 
-                          borda = "border-danger"
-                          descricao = "Gorduras"
-                          :conteudo = "'min: ' + gorduras + ' gr/dia'"
-                        />
-                      </div>
-                      <div class="col-md-6">
-                        <btn-input 
-                          borda = "border-primary"
-                          descricao = "Água"
-                          :conteudo = "'max: ' + agua + ' gr/dia'"
-                        />
-                      </div>
+                    <div class="col-md-6">
+                      <btn-input 
+                        borda = "border-primary"
+                        descricao = "Água"
+                        :conteudo = "'max: ' + agua + ' gr/dia'"
+                      />
                     </div>
-
-                  <!--  -->
+                  </div>
+                  <hr>
+                  <div class='container'>
+                    <h5 class="text-center titulo top-3">Ainda não acabou! </h5>
+                    <p class="textoAlimentos">
+                      Eu separei para você um comparativo com os principais alimentos que estão presentes em nossa mesa, 
+                      para ajudar você a fazer a melhor escolha quando for se alimentar. Fique atento aos alimentos que te ajudam a alcançar o 
+                      seu objetivo ( BONS ) e aqueles que te atrapalham e naturalmente, são os menos indicados ( RUINS ).
+                    </p>
+                  </div>
+                  <div class="col-md-12 row top-3">
+                    <div class="col-md-6">
+                      <img src="/static/img/proteinas.png" alt="Proteinas" class="img-thumbnail">
+                    </div>
+                    <div class="col-md-6">
+                      <img src="/static/img/carboidratos.png" alt="Proteinas" class="img-thumbnail">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="col-md-12 row">
+                    <div class="col-md-6">
+                      <img src="/static/img/gorduras.png" alt="Proteinas" class="img-thumbnail">
+                    </div>
+                    <div class="col-md-6">
+                      <img src="/static/img/agua.png" alt="Proteinas" class="img-thumbnail">
+                    </div>
+                  </div>
+    
                 </div>
                 <!-- /.card-body -->
               </div>
@@ -177,6 +185,7 @@ export default {
     "fundoImc",
     "textoImc",
     "taxaMetabolica",
+    "taxaMetabolicaIndicada",
     "objetivo",
     "textoObjetivo",
     "kgObjetivo",
@@ -227,5 +236,8 @@ export default {
       margin-left: 4%;
       margin-top: 2%;
       margin-bottom: 2%;
+    }
+    .textoAlimentos{
+      font-size: 1.5rem;
     }
 </style>
