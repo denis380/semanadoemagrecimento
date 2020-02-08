@@ -3,125 +3,173 @@
         <div class="container main">
             <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Veja agora o seu resultado em nosso termômetro S2já</h3>
+                    <span class="labelResultados">Veja agora o seu resultado em nosso termômetro S2já</span>
                 </div>
-                <h5 class="card-title main">Esta é sua composição corporal estimada:</h5>
+                <h5 class="card-title main titulo top-3" id="focus" name="focus">Esta é sua composição corporal estimada:</h5>
                 <!-- /.card-header -->
                 <div class="card-body">
                   <table class="table table-bordered">
                     <tbody>
                       <tr>
-                        <td>Percentual de gordura corporal</td>
-                        <td>
+                        <td class="labelResultados">Percentual de gordura corporal</td>
+                        <td class="numeroResultado" :class="fundoGorduraCorporal">
                           <span :class="fundoGorduraCorporal" class="badge"> {{ gorduraCorporal || " ... " }} %</span>
                         </td>
-                        <td>
+                        <td class="numeroResultado" :class="fundoGorduraCorporal">
                           <span :class="fundoGorduraCorporal" class="badge">{{ textoGorduraCorporal || "..." }}</span>
                         </td>
                       </tr>
     
                       <tr>
-                        <td>Massa magra corporal aproximada</td>
-                        <td>
+                        <td class="labelResultados">Massa magra corporal aproximada</td>
+                        <td class="numeroResultado" :class="fundoMassaMagra">
                           <span :class="fundoMassaMagra" class="badge">{{ massaMagra || " ... " }} kg</span>
                           
                         </td>
-                        <td><span :class="fundoMassaMagra" class="badge">{{ textoMassaMagra || "..." }} </span></td>
+                        <td class="numeroResultado" :class="fundoMassaMagra"><span :class="fundoMassaMagra" class="badge">{{ textoMassaMagra || "..." }} </span></td>
                       </tr>
     
                       <tr>
-                        <td>Massa gorda corporal aproximada</td>
-                        <td>
+                        <td class="labelResultados">Massa gorda corporal aproximada</td>
+                        <td class="numeroResultado" :class="fundoMassaGorda">
                             <span :class="fundoMassaGorda" class="badge">{{ massaGorda || " ... " }} kg</span>
                         </td>
-                        <td><span :class="fundoMassaGorda" class="badge">{{ textoMassaGorda || " ... " }} </span></td>
+                        <td class="numeroResultado" :class="fundoMassaGorda">
+                          <span :class="fundoMassaGorda" class="badge">{{ textoMassaGorda || " ... " }} </span>
+                        </td>
                       </tr>
     
                       <tr>
-                        <td>Índice de massa corporal (IMC)</td>
-                        <td>
+                        <td class="labelResultados">Índice de massa corporal (IMC)</td>
+                        <td class="numeroResultado" :class="fundoImc">
                             <span :class="fundoImc" class="badge">{{ imc || " ... " }} Kg/m2</span>
                         </td>
-                        <td><span :class="fundoImc" class="badge">{{ textoImc || " ... " }}</span></td>
+                        <td class="numeroResultado" :class="fundoImc">
+                          <span :class="fundoImc" class="badge">{{ textoImc || " ... " }}</span>
+                        </td>
                       </tr>
                       <tr>
-                        <td>Relação cintura quadril (RCQ)</td>
-                        <td>
+                        <td class="labelResultados">Relação cintura quadril (RCQ)</td>
+                        <td class="numeroResultado" :class="fundoRcq">
                           <span :class="fundoRcq" class="badge ">{{ rcq || " ... " }}</span>
                         </td>
-                        <td><span :class="fundoRcq" class="badge ">{{ textoRcq || " ... " }}</span></td>
+                        <td class="numeroResultado" :class="fundoRcq"><span :class="fundoRcq" class="badge ">{{ textoRcq || " ... " }}</span></td>
                       </tr>
     
                     </tbody>
                   </table>
                   <!--  -->
                   <div class="card-header">
-                    <h5 class="text-center">Esta é sua taxa metabólica estimada: </h5>
+                    <h5 class="text-center titulo top-3">Esta é sua taxa metabólica basal estimada: </h5>
                   </div>
-                  <table class="table table-bordered">
-                      <tbody>
-                        <tr>
-                          <td>Quantas calorias o seu corpo consome a cada 24hs</td>
-                          <td class="badge-lg bg-warning">
-                            <label class="bottom-2">
-                                {{ taxaMetabolica || " ... " }} 
-                                <span class="badge"> kcal/dia</span>
+                  <div class="card">
+                    <table class="margin-full">
+                        <tbody>
+                          <tr class="">
+                            <td class="labelResultados">Quantas calorias o seu corpo consome a cada 24hs</td>
+                            <td class="badge-lg bg-warning">
+                              <label class="bottom-2 numeroResultado">
+                                  {{ taxaMetabolica || " ... " }} 
+                                  <span class="badge"> kcal/dia</span>
 
-                            </label>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  <div class="card-header">
-                    <h5 class="text-center">SEU OBJETIVO É: </h5>
+                              </label>
+                            </td>
+                          </tr>
+                          <hr style="margin-left:15%">
+                          <tr>
+                            <td class="labelResultados">
+                              Esta é a quantidade de quilocalorias que você deve ingerir para conseguir {{ textoObjetivo }}
+                              os {{ kgObjetivo }}Kg que você deseja: 
+                            </td>
+                            <td class="badge-lg bg-success">
+                              <label class="bottom-2 numeroResultado">
+                                  {{ taxaMetabolicaIndicada || " ... " }} 
+                                  <span class="badge"> kcal/dia</span>
+
+                              </label>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+
                   </div>
-                  <table class="table table-bordered">
-                      <tbody>
-                        <tr>
-                          <td class="bg-black">
-                            {{ objetivo || " ..." }}
-                          </td>
-                        </tr>
-                        <tr >
-                          <p class="top-3">
-                            Para isso, fique atento à quantidade de macronutrientes que
-                            você deve ingerir para conseguir {{ textoObjetivo || "..." }} os {{ kgObjetivo || "0" }} kgs que deseja:
-                          </p>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <div class="col-md-12 row top-3">
-                      <div class="col-md-3">
-                        <label for="">Proteínas</label>
-                        <div class="bg-success">{{ proteinas ||  " ... "  }} <span class="badge">gr/dia</span></div>
-                      </div>
-                      <div class="col-md-3">
-                        <label for="">Carboidratos</label>
-                        <div class="bg-success">{{ carboidratos || " ... " }} <span class="badge">gr/dia</span></div>
-                      </div>
-                      <div class="col-md-3">
-                        <label for="">Gorduras</label>
-                        <div class="bg-success">{{ gorduras || " ... " }} <span class="badge">gr/dia</span></div>
-                      </div>
-                      <div class="col-md-3">
-                        <label for="">Água</label>
-                        <div class="bg-success">{{ agua || " ... " }} <span class="badge">Lts/dia</span></div>
-                      </div>
+ 
+                  <div class="col-md-12 row top-3">
+                    <div class="col-md-6">
+                      <btn-input 
+                        borda = "border-danger"
+                        descricao = "Proteinas"
+                        :conteudo = "'min: ' + proteinas + ' gr/dia'"
+                      />
                     </div>
-                  <!--  -->
-
+                    <div class="col-md-6">
+                      <btn-input 
+                        borda = "border-dark"
+                        descricao = "Carboidratos"
+                        :conteudo = "'max: ' + carboidratos + ' gr/dia'"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-12 row top-3">
+                    <div class="col-md-6">
+                      <btn-input 
+                        borda = "border-danger"
+                        descricao = "Gorduras"
+                        :conteudo = "'min: ' + gorduras + ' gr/dia'"
+                      />
+                    </div>
+                    <div class="col-md-6">
+                      <btn-input 
+                        borda = "border-primary"
+                        descricao = "Água"
+                        :conteudo = "'max: ' + agua + ' gr/dia'"
+                      />
+                    </div>
+                  </div>
+                  <hr>
+                  <div class='container'>
+                    <h5 class="text-center titulo top-3">Ainda não acabou! </h5>
+                    <p class="textoAlimentos">
+                      Eu separei para você um comparativo com os principais alimentos que estão presentes em nossa mesa, 
+                      para ajudar você a fazer a melhor escolha quando for se alimentar. Fique atento aos alimentos que te ajudam a alcançar o 
+                      seu objetivo ( BONS ) e aqueles que te atrapalham e naturalmente, são os menos indicados ( RUINS ).
+                    </p>
+                  </div>
+                  <div class="col-md-12 row top-3">
+                    <div class="col-md-6">
+                      <img src="/static/img/proteinas.png" alt="Proteinas" class="img-thumbnail">
+                    </div>
+                    <div class="col-md-6">
+                      <img src="/static/img/carboidratos.png" alt="Proteinas" class="img-thumbnail">
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="col-md-12 row">
+                    <div class="col-md-6">
+                      <img src="/static/img/gorduras.png" alt="Proteinas" class="img-thumbnail">
+                    </div>
+                    <div class="col-md-6">
+                      <img src="/static/img/agua.png" alt="Proteinas" class="img-thumbnail">
+                    </div>
+                  </div>
+    
                 </div>
                 <!-- /.card-body -->
               </div>
+
           </div>
           <!--  -->
 </template>
 
 <script>
+import Grafico01 from '@/components/Grafico01'
+import BtnInput from '@/components/BtnInput'
+
 export default {
   name: 'Resultado',
   components:{
-      
+      Grafico01,
+      BtnInput
   },
   props:[
     "gorduraCorporal",
@@ -137,6 +185,7 @@ export default {
     "fundoImc",
     "textoImc",
     "taxaMetabolica",
+    "taxaMetabolicaIndicada",
     "objetivo",
     "textoObjetivo",
     "kgObjetivo",
@@ -146,11 +195,13 @@ export default {
     "textoRcq",
     "fundoRcq",
     "rcq",
-    "agua"
+    "agua",
+    "dataGrafico01"
   ],
   data () {
     return {
-      
+      cores01: ["#41B883", "#E46651","#FFFF00", "#00D8FF"],
+      numeros01: [this.proteinas, this.carboidratos, this.gorduras, this.agua],
     }
   }
 }
@@ -169,5 +220,24 @@ export default {
     }
     .top-3{
       padding-top: 3%;
+    }
+    .labelResultados{
+      font-size: 1.4rem;
+    }
+    .numeroResultado{
+      font-size: 1.6rem;
+    }
+    .titulo{
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      font-size: 2.0rem;
+    }
+    .margin-full{
+      width: 90%;
+      margin-left: 4%;
+      margin-top: 2%;
+      margin-bottom: 2%;
+    }
+    .textoAlimentos{
+      font-size: 1.5rem;
     }
 </style>

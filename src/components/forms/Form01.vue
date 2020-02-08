@@ -201,7 +201,7 @@
       <!-- /form 03 -->
       <hr class="hr">
 
-      <button class="btn btn-block bg-gradient-warning btn-lg">CALCULAR</button>
+      <button class="btn btn-block bg-gradient-warning btn-lg" id="index.html#focus">CALCULAR</button>
     </form>
 
 </template>

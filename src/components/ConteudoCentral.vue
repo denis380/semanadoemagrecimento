@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <form-01 @calcular="calcular"  />
+    <form-01 @calcular="exibeResultado"  />
   </div>
 </template>
 
@@ -26,7 +26,7 @@ export default {
     }
   },
   methods: {
-    calcular(obj){
+    exibeResultado(obj){
       var fundoGorduraCorporal;
       var textoGorduraCorporal;
       var fundoMassaMagra;     
@@ -42,6 +42,7 @@ export default {
       var percentual;
       var respostaRcq;
       var percentualGordura;
+      var taxaMetabolicaIndicada;
 
       var kgObjetivo = obj.edtQuilosObjetivo;
       var sexo = obj.iptSexo
@@ -97,15 +98,7 @@ export default {
       var cintura = obj.edtCircunferenciaCintura
 
       //Tratamentos de exibição
-      if(obj.edtObjetivo == "perder"){
-        var objetivo = "PERDER PESO"
-      }
-      if(obj.edtObjetivo == "manter"){
-        var objetivo = "MANTER O PESO";
-      }
-      if(obj.edtObjetivo == "ganhar"){
-        var objetivo = "GANHAR PESO";
-      }
+      
       var quilosObjetivo = obj.edtQuilosObjetivo;
       var rcq = cintura / quadril;
       if(sexo == "masculino"){
@@ -260,16 +253,30 @@ export default {
       var proteinas = getProteinas(taxaMetabolica, objetivoValor);
       var gorduras = getGorduras(taxaMetabolica, objetivoValor);
       var agua = getAgua(peso, objetivoValor);
+
+      if(obj.edtObjetivo == "perder"){
+        var objetivo = "PERDER PESO"
+        taxaMetabolicaIndicada = ((proteinas + carboidratos) * 4) + (gorduras * 9);
+      }
+      if(obj.edtObjetivo == "manter"){
+        var objetivo = "MANTER O PESO";
+        taxaMetabolicaIndicada = taxaMetabolica;
+      }
+      if(obj.edtObjetivo == "ganhar"){
+        var objetivo = "GANHAR PESO";
+        taxaMetabolicaIndicada = ((proteinas + carboidratos) * 4) + (gorduras * 9);
+      }
       var $arrayResult = {};
       $arrayResult = {
         'taxaMetabolica': parseFloat(taxaMetabolica.toFixed(1)),
+        'taxaMetabolicaIndicada': parseFloat(taxaMetabolicaIndicada.toFixed(1)),
         'objetivo': objetivo,
         'textoObjetivo': obj.edtObjetivo,
         'kgObjetivo': kgObjetivo,
         'imc': parseFloat(imc.toFixed(1)),
         'fundoImc': fundoImc,
         'textoImc': textoImc,
-        'rcq': parseFloat(rcq.toFixed(1)),
+        'rcq': parseFloat(rcq.toFixed(2)),
         'fundoRcq': fundoRcq,
         'textoRcq': textoRcq,
         'massaMagra': parseFloat(massaMagraKg.toFixed(1)),
