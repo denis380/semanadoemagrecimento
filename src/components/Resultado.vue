@@ -115,18 +115,23 @@
                       <btn-input 
                         borda = "border-danger"
                         descricao = "Gorduras"
-                        :conteudo = "'min: ' + gorduras + ' gr/dia'"
+                        :conteudo = "'max: ' + gorduras + ' gr/dia'"
                       />
                     </div>
                     <div class="col-md-6">
                       <btn-input 
                         borda = "border-primary"
                         descricao = "Água"
-                        :conteudo = "'max: ' + agua + ' gr/dia'"
+                        :conteudo = "'média: ' + agua + ' Lt/dia'"
                       />
                     </div>
                   </div>
                   <hr>
+                  <div class="col-md-6" style="margin-left:24%">
+                    <div class="embed-responsive embed-responsive-16by9 video">
+                      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/V7nhPVIvmzI" allowfullscreen></iframe>
+                    </div>
+                  </div>
                   <div class='container'>
                     <h5 class="text-center titulo top-3">Ainda não acabou! </h5>
                     <p class="textoAlimentos">
@@ -135,6 +140,7 @@
                       seu objetivo ( BONS ) e aqueles que te atrapalham e naturalmente, são os menos indicados ( RUINS ).
                     </p>
                   </div>
+                  
                   <div class="col-md-12 row top-3">
                     <div class="col-md-6">
                       <img src="/static/img/proteinas.png" alt="Proteinas" class="img-thumbnail">
