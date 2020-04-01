@@ -48,7 +48,7 @@ export default {
       var sexo = obj.iptSexo
       var idade = obj.edtIdade
       var peso = obj.edtPeso
-      var altura = obj.edtAltura.replace(".", "");
+      var altura = obj.edtAltura;
       var circunferenciaCintura = obj.edtCircunferenciaCintura
       var exercicios = obj.edtExercicios
       var insonia = (obj.iptInsonia == "sim" ? 0.915 : 1);
@@ -191,15 +191,12 @@ export default {
             percentual = fpercentual4655(percentualGordura);
           }
           break;
-        case (idade <= 65) :
-          if(sexo == 'masculino'){
-            percentual = percentual5665(percentualGordura);
-          }else{
-            percentual = fpercentual5665(percentualGordura);
-          }
-          break;
-      
         default:
+            if(sexo == 'masculino'){
+              percentual = percentual5665(percentualGordura);
+            }else{
+              percentual = fpercentual5665(percentualGordura);
+            }
           break;
       }
       // Pegando resposta do RCQ
@@ -296,7 +293,7 @@ export default {
         'agua': parseFloat(agua.toFixed(1))
 
         }
-        //console.log(percentual.fundo);
+        console.log(percentual.fundo);
       
       this.$emit('exibeResult', $arrayResult)
     },
@@ -411,8 +408,8 @@ function percentual4655(percentualGordura){
     case (percentualGordura > 30):
         return {'nivel':'MUITO RUIM', 'faixa':'30 a 38%', 'idade': '46 a 55', 'fundo': 'bg-danger'}
       break;
-  
     default:
+        return {'nivel':'MUITO RUIM', 'faixa':'30 a 38%', 'idade': '46 a 55', 'fundo': 'bg-danger'}
       break;
   }
 }

@@ -12,8 +12,6 @@
     <Resultado
       v-if="this.exibe"
       v-bind:gorduraCorporal        = 'resultados.gorduraCorporal'
-      v-bind:fundoGorduraCorporal   = 'resultados.percentual.fundo'
-      v-bind:textoGorduraCorporal   = 'resultados.percentual.nivel'
       v-bind:massaMagra             = 'resultados.massaMagra'
       v-bind:fundoMassaMagra        = 'resultados.fundoMassaMagra'
       v-bind:textoMassaMagra        = 'resultados.textoMassaMagra'
@@ -26,6 +24,8 @@
       v-bind:rcq                    = 'resultados.rcq'  
       v-bind:textoRcq               = 'resultados.respostaRcq.nivel'  
       v-bind:fundoRcq               = 'resultados.respostaRcq.fundo'  
+      v-bind:fundoGorduraCorporal   = 'resultados.percentual.fundo'
+      v-bind:textoGorduraCorporal   = 'resultados.percentual.nivel'
       v-bind:taxaMetabolica         = 'resultados.taxaMetabolica'
       v-bind:taxaMetabolicaIndicada = 'resultados.taxaMetabolicaIndicada'
       v-bind:objetivo               = 'resultados.objetivo'
