@@ -32,10 +32,21 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 700px) {
       .divInput{
-      font-size: 1.4rem !important;
+      font-size: 1rem !important;
      }
+     .btnInput{
+       font-size: 1rem !important;
+     }
+    }
+    @media only screen and (max-width: 1090px){
+      .btnInput{
+        font-size: 1.5rem !important;
+      }
+      .inputBtn{
+        font-size: 1rem !important;
+      }
     }
     .inputBtn{
       background-color: beige;

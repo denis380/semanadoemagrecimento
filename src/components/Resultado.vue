@@ -133,7 +133,7 @@
           </div>
         </div>
         <hr />
-        <div class="col-md-6" style="margin-left:24%">
+        <div class="container text-center" style="width:50%">
           <div class="embed-responsive embed-responsive-16by9 video">
             <iframe
               class="embed-responsive-item"
