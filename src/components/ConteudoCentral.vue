@@ -293,7 +293,7 @@ export default {
         'agua': parseFloat(agua.toFixed(1))
 
         }
-        console.log(percentual.fundo);
+        //console.log(percentual.fundo);
       
       this.$emit('exibeResult', $arrayResult)
     },
