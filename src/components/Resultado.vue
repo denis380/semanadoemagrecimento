@@ -277,6 +277,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+@media only screen and (max-width: 550px){
+  .numeroResultado{
+    font-size: 1.2rem !important;
+  }
+  .labelResultados{
+    font-size: 1rem !important;
+  }
+}
 .main {
   margin-top: 3%;
 }

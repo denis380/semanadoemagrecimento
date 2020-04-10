@@ -146,7 +146,7 @@
             <div class="row" id="sliderEx">
                 <label for="edtExexcicios" class="col-md-6 descricao">EXERCÍCIOS DIARIOS :   <span class="badge badge-danger">Arraste a bolinha</span></label>
                 <span class="col-sm-4 ipt">
-                    <input v-model="edtExercicios" type="range" class="custom-range custom-range-danger" id="edtExexcicios" min="1" max="6" data-toggle="tooltip" data-placement="top" :title='texto01'>
+                    <input v-model="edtExercicios" type="range" class="custom-range custom-range-danger" id="edtExexcicios" min="1" max="6" data-toggle="tooltip"  :title='texto01'>
                     1 &nbsp 2 &nbsp 3 &nbsp 4 &nbsp 5 &nbsp 6
                 </span>
                 <span class="descricao" style="margin-left:0.5rem;margin-top:0.3rem">{{ edtExercicios }}</span>
