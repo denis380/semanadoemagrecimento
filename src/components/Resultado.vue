@@ -194,8 +194,8 @@
         </div>
         <div>
           <hr style="width: 50%;">
-          <h4>Muito obrigado pelo acesso!</h4> 
-          <h5>Acesse agora nossas referências e base de dados.</h5>  
+          <h4>Muito obrigado pelo acesso!</h4>
+          <h5>Acesse agora nossas referências e base de dados.</h5>
         </div>
         <div class="col-md-12 row" style="margin-top:5%">
           <div class="col-md-6 badge badge-info text-center" style="font-size: 1rem;white-space: normal;cursor: default;" v-on:click='downloadBase()'>
@@ -299,9 +299,13 @@ export default {
 }
 .labelResultados {
   font-size: 1.4rem;
+  /* opacity: 0.8 !important; */
+
 }
 .numeroResultado {
   font-size: 1.6rem;
+  opacity: 0.8 !important;
+
 }
 .titulo {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
