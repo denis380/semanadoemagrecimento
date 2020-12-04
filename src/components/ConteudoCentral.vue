@@ -22,22 +22,22 @@ export default {
   ],
   data () {
     return {
-      
+
     }
   },
   methods: {
     exibeResultado(obj){
       var fundoGorduraCorporal;
       var textoGorduraCorporal;
-      var fundoMassaMagra;     
-      var textoMassaMagra;      
+      var fundoMassaMagra;
+      var textoMassaMagra;
       var fundoMassaGorda;
       var textoMassaGorda;
       var fundoImc;
       var textoImc;
-      var textoRcq;  
+      var textoRcq;
       var fundoRcq;
-      var rangeIdadeGordura;  
+      var rangeIdadeGordura;
       var rangeHomem;
       var percentual;
       var respostaRcq;
@@ -61,10 +61,10 @@ export default {
           break;
         case "mesomorfo":
           var biotipo = 1
-          break;      
+          break;
         case "endomorfo":
           var biotipo = 0.9
-          break;      
+          break;
         default:
           break;
       }
@@ -90,7 +90,7 @@ export default {
         case '7':
           exercicios = 1063;
           break;
-      
+
         default:
           break;
       }
@@ -98,7 +98,7 @@ export default {
       var cintura = obj.edtCircunferenciaCintura
 
       //Tratamentos de exibição
-      
+
       var quilosObjetivo = obj.edtQuilosObjetivo;
       var rcq = cintura / quadril;
       if(sexo == "masculino"){
@@ -114,7 +114,10 @@ export default {
       var massaGordaKg = (peso / 100) * massaGorda;
       var objetivoValor = obj.edtObjetivo;
 
-      var imc = peso / ((altura * 0.01)^2);
+      var calc1 = altura / 100;
+      var calc2 = calc1 * calc1;
+      var imc = peso / calc2;
+
       // Escolha do sexo
       if(sexo == "masculino"){
         var tmbBase = 66.5 + (13.75 * peso) + (5.003 * altura) - (6.775 * idade);
@@ -135,7 +138,7 @@ export default {
       }else if(imc > 40){
         textoImc = 'OBESIDADE GRAU III';
         fundoImc = 'bg-danger';
-      }else{ 
+      }else{
         textoImc = 'INDEFINIDO';
         fundoImc = 'bg-ligth'
       }
@@ -237,7 +240,7 @@ export default {
           }
           break;
       }
-      
+
 
       // Acrescentando o biotipo
       var tmbBase1 = parseInt(tmbBase * biotipo);
@@ -294,13 +297,13 @@ export default {
 
         }
         //console.log(percentual.fundo);
-      
+
       this.$emit('exibeResult', $arrayResult)
     },
-    
+
   },
 }
-// Função para homens 
+// Função para homens
 function percentual1825(percentualGordura){
   switch (true) {
     case (percentualGordura >= 0 && percentualGordura <= 6):
@@ -324,7 +327,7 @@ function percentual1825(percentualGordura){
     case (percentualGordura > 24):
         return {'nivel':'MUITO RUIM', 'faixa':'25 a 36%', 'idade': '18 a 25', 'fundo': 'bg-danger'}
       break;
-  
+
     default:
       break;
   }
@@ -352,7 +355,7 @@ function percentual2635(percentualGordura){
     case (percentualGordura > 28):
         return {'nivel':'MUITO RUIM', 'faixa':'25 a 36%', 'idade': '26 a 35', 'fundo': 'bg-danger'}
       break;
-  
+
     default:
       break;
   }
@@ -380,7 +383,7 @@ function percentual3645(percentualGordura){
     case (percentualGordura > 29):
         return {'nivel':'MUITO RUIM', 'faixa':'29 a 39%', 'idade': '36 a 45', 'fundo': 'bg-danger'}
       break;
-  
+
     default:
       break;
   }
@@ -436,7 +439,7 @@ function percentual5665(percentualGordura){
     case (percentualGordura > 31):
         return {'nivel':'MUITO RUIM', 'faixa':'31 a 38%', 'idade': '56 acima', 'fundo': 'bg-danger'}
       break;
-  
+
     default:
       break;
   }
@@ -465,7 +468,7 @@ function fpercentual1825(percentualGordura){
     case (percentualGordura > 33):
         return {'nivel':'MUITO RUIM', 'faixa':'33 a 43%', 'idade': '18 a 25', 'fundo': 'bg-danger'}
       break;
-  
+
     default:
       break;
   }
@@ -493,7 +496,7 @@ function fpercentual2635(percentualGordura){
     case (percentualGordura > 35):
         return {'nivel':'MUITO RUIM', 'faixa':'35 a 49%', 'idade': '26 a 35', 'fundo': 'bg-danger'}
       break;
-  
+
     default:
       break;
   }
@@ -521,7 +524,7 @@ function fpercentual3645(percentualGordura){
     case (percentualGordura > 36):
         return {'nivel':'MUITO RUIM', 'faixa':'36 a 48%', 'idade': '36 a 45', 'fundo': 'bg-danger'}
       break;
-  
+
     default:
       break;
   }
@@ -549,7 +552,7 @@ function fpercentual4655(percentualGordura){
     case (percentualGordura > 39):
         return {'nivel':'MUITO RUIM', 'faixa':'39 a 50%', 'idade': '46 a 55', 'fundo': 'bg-danger'}
       break;
-  
+
     default:
       break;
   }
@@ -577,7 +580,7 @@ function fpercentual5665(percentualGordura){
     case (percentualGordura > 39):
         return {'nivel':'MUITO RUIM', 'faixa':'39 a 49%', 'idade': '56 acima', 'fundo': 'bg-danger'}
       break;
-  
+
     default:
       break;
   }
@@ -757,7 +760,7 @@ function getProteinas(taxaMetabolica, objetivo){
       proteinas = (((taxaMetabolica / 100 ) * 35) / 4) * 1.2;
       return proteinas;
       break;
-  
+
     default:
       break;
   }
@@ -777,7 +780,7 @@ function getCarboidratos(taxaMetabolica, objetivo){
       carboidratos = (((taxaMetabolica / 100 ) * 45) / 4) * 1.7;
       return carboidratos;
       break;
-  
+
     default:
       break;
   }
@@ -797,7 +800,7 @@ function getGorduras(taxaMetabolica, objetivo){
       gorduras = gorduras * 0.9;
       return gorduras;
       break;
-  
+
     default:
       break;
   }
@@ -817,14 +820,14 @@ function getAgua(peso, objetivo){
       agua = peso * 0.07;
       return agua;
       break;
-  
+
     default:
       break;
-  } 
+  }
 }
 
 
-  
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
